@@ -64,6 +64,7 @@ nav a:first-of-type {
 }
 
 main {
+  padding: 4rem 0;
   flex-grow: 1;
 }
 
