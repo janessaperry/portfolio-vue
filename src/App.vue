@@ -23,7 +23,7 @@ import { RouterLink, RouterView } from 'vue-router'
       <ph-github-logo size="32" />
     </div>
 
-    <div class="credit">
+    <div class="attribution">
       <img alt="Vue logo" class="logo" src="@/assets/jp-logo.svg" width="24" />
       <p>Designed & developed by Janessa Perry</p>
     </div>
@@ -32,8 +32,8 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <style scoped>
 header {
-  width: 100vw;
-  padding: 1rem;
+  width: 100%;
+  padding-bottom: 1rem;
   display: flex;
   align-items: center;
   gap: 2rem;
@@ -48,7 +48,7 @@ nav {
 }
 
 nav a.router-link-exact-active {
-  color: var(--color-text);
+  color: var(--color-text-light);
 }
 
 nav a.router-link-exact-active:hover {
@@ -64,27 +64,24 @@ nav a:first-of-type {
 }
 
 main {
-  padding: 1rem;
   flex-grow: 1;
 }
 
 footer {
-  padding: 1rem;
+  padding-top: 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .socials,
-.credit {
+.attribution {
   display: flex;
+  align-items: center;
   gap: 1rem;
 }
 
 @media (min-width: 1024px) {
-  main {
-    padding: 1rem;
-    flex-grow: 1;
-  }
+
 }
 </style>
