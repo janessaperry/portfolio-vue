@@ -1,54 +1,68 @@
-/* color palette from <https://github.com/vuejs/theme> */
 :root {
-  --vt-c-white: #ffffff;
-  --vt-c-white-soft: #f8f8f8;
-  --vt-c-white-mute: #f2f2f2;
+  /* font families */
+  --jp-font-heading: Comfortaa, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  --jp-font-body: Urbanist, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
 
-  --vt-c-black: #181818;
-  --vt-c-black-soft: #222222;
-  --vt-c-black-mute: #282828;
+  /* font sizes */
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1.125rem;
+  --font-size-lg: 1.4rem;
+  --font-size-xl: 1.8rem;
+  --font-size-display: 4rem;
 
-  --vt-c-indigo: #2c3e50;
+  /* primitive colors */
+  /*--jp-c-white: #FFFFFF;*/
+  /*--jp-c-white-soft: #F8F8F8;*/
+  /*--jp-c-white-mute: #F2F2F2;*/
 
-  --vt-c-divider-light-1: rgba(60, 60, 60, 0.29);
-  --vt-c-divider-light-2: rgba(60, 60, 60, 0.12);
-  --vt-c-divider-dark-1: rgba(84, 84, 84, 0.65);
-  --vt-c-divider-dark-2: rgba(84, 84, 84, 0.48);
+  /*--jp-c-black: #181818;*/
+  /*--jp-c-black-soft: #222222;*/
+  /*--jp-c-black-mute: #282828;*/
 
-  --vt-c-text-light-1: var(--vt-c-indigo);
-  --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
-  --vt-c-text-dark-1: var(--vt-c-white);
-  --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
+  --jp-c-blue-50: #C4C1D5;
+  --jp-c-blue-100: #413488;
+  --jp-c-blue-300: #201D5A;
+  --jp-c-blue-500: #171749;
+  --jp-c-blue-700: #0C0C34;
+  --jp-c-blue-neon: #009DFF;
+
+  --jp-c-fuschia-50: #FACFFA;
+  --jp-c-fuschia-100: #E3ADE3;
+  --jp-c-fuschia-300: #F1A7F2;
+  --jp-c-fuschia-500: #911791;
+  --jp-c-fuschia-700: #59185A;
+  --jp-c-fuschia-900: #3A0E53;
+  --jp-c-fuschia-neon: #FC00FF;
+  --jp-c-fuschia-muted: #C083C0;
+
+  --jp-c-seafoam-500: #95DAC5;
+  --jp-c-seafoam-700: #17946E;
+  --jp-c-seafoam-neon: #00FFB1;
 }
 
-/* semantic color variables for this project */
+/* semantic color variables */
 :root {
-  --color-background: var(--vt-c-white);
-  --color-background-soft: var(--vt-c-white-soft);
-  --color-background-mute: var(--vt-c-white-mute);
+  --color-background: var(--jp-c-blue-700);
 
-  --color-border: var(--vt-c-divider-light-2);
-  --color-border-hover: var(--vt-c-divider-light-1);
+  --color-surface-light: var(--jp-c-fuschia-100);
+  --color-surface-light-muted: var(--jp-c-fuschia-muted);
+  --color-surface-dark: var(--jp-c-blue-500);
+  --color-surface-dark-muted: var(--jp-c-blue-100);
 
-  --color-heading: var(--vt-c-text-light-1);
-  --color-text: var(--vt-c-text-light-1);
+  /*--color-border: var(--jp-c-divider-dark-2);*/
+  /*--color-border-hover: var(--jp-c-divider-dark-1);*/
 
-  --section-gap: 160px;
+  --color-heading-light: var(--jp-c-fuschia-100);
+  --color-heading-dark: var(--jp-c-fuschia-500);
+  --color-text-light: var(--jp-c-blue-50);
+  --color-text-dark: var(--jp-c-blue-700);
+
+  --color-link: var(--jp-c-fuschia-50);
+  --color-link-alt: var(--jp-c-seafoam-500);
+  --color-button: #000;
+  --color-button-hover: #000;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-background: var(--vt-c-black);
-    --color-background-soft: var(--vt-c-black-soft);
-    --color-background-mute: var(--vt-c-black-mute);
-
-    --color-border: var(--vt-c-divider-dark-2);
-    --color-border-hover: var(--vt-c-divider-dark-1);
-
-    --color-heading: var(--vt-c-text-dark-1);
-    --color-text: var(--vt-c-text-dark-2);
-  }
-}
 
 *,
 *::before,
@@ -60,27 +74,19 @@
 
 body {
   min-height: 100vh;
-  color: var(--color-text);
+  color: var(--color-text-light);
   background: var(--color-background);
-  transition:
-    color 0.5s,
-    background-color 0.5s;
+  font-family: var(--jp-font-body), sans-serif;
+  font-size: var(--font-size-base);
   line-height: 1.6;
-  font-family:
-    Inter,
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    'Fira Sans',
-    'Droid Sans',
-    'Helvetica Neue',
-    sans-serif;
-  font-size: 15px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Comfortaa, sans-serif;
+  line-height: 1.2;
+  color: var(--color-heading-light);
+  text-transform: lowercase;
 }
