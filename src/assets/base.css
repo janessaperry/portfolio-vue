@@ -48,6 +48,7 @@
   --color-surface-light-muted: var(--jp-c-fuschia-muted);
   --color-surface-dark: var(--jp-c-blue-500);
   --color-surface-dark-muted: var(--jp-c-blue-100);
+  --color-surface-dark-alt: var(--jp-c-fuschia-900);
 
   /*--color-border: var(--jp-c-divider-dark-2);*/
   /*--color-border-hover: var(--jp-c-divider-dark-1);*/
@@ -61,6 +62,10 @@
   --color-link-alt: var(--jp-c-seafoam-500);
   --color-button: #000;
   --color-button-hover: #000;
+
+  --color-shadow-inset-light: rgba(227, 173, 227, 0.15);
+  --color-shadow-inset: rgba(252, 0, 255, 0.15);
+  --color-shadow-inset-dark: rgba(12, 12, 52, 0.5);
 }
 
 
@@ -87,6 +92,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: Comfortaa, sans-serif;
   line-height: 1.2;
+  font-weight: 500;
   color: var(--color-heading-light);
   text-transform: lowercase;
 }
