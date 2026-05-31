@@ -19,29 +19,18 @@
       </div>
 
       <section class="role-details">
-        <h2 class="role-title">Junior Web Developer</h2>
-        <div class="role-meta">
-          <p>Independent Contractor</p>
-          <p>2025-Present</p>
+        <div>
+          <h2 class="role-title">Junior Web Developer</h2>
+          <div class="role-meta">
+            <p>Independent Contractor</p>
+            <p>2025-Present</p>
+          </div>
         </div>
 
         <div>
           <h3>Quest Log</h3>
           <ul>
-            <li>
-              Contributed to a civic engagement platform for Austrian municipalities, building modal
-              authentication and participation flows, improving mobile responsiveness, and
-              implementing i18n translations for multilingual support.
-            </li>
-            <li>
-              Designed and contributed to the development of a custom WordPress theme featuring
-              Advanced Custom Fields (ACF), React-powered dynamic search and filtering to avoid page
-              reloads, and PHP with Laravel on the backend.
-            </li>
-            <li>
-              Collaborated with senior developers to integrate REST APIs, connecting frontend
-              components with backend data and functionality.
-            </li>
+            <li>Experience details.</li>
           </ul>
         </div>
 
@@ -62,17 +51,38 @@
       <section class="companion-wrapper">
         <h3>Select a companion</h3>
         <div class="companion-selection">
-          <button aria-pressed="true" class="companion-button">Class Act</button>
-          <button aria-pressed="false" class="companion-button">Big Stretchies</button>
-          <button aria-pressed="false" class="companion-button">Snoozie Boos</button>
+          <button aria-pressed="true" class="companion-button" aria-label="Class Act">
+            <img src="@/assets/images/louie-sitting.png" alt="Orange cat sitting."/>
+          </button>
+          <button aria-pressed="false" class="companion-button" aria-label="Big Stretchies">
+            <img src="@/assets/images/louie-stretching.png" alt="Orange cat stretching."/>
+          </button>
+          <button aria-pressed="false" class="companion-button" aria-label="Snoozie Boos">
+            <img src="@/assets/images/louie-sleeping.png" alt="Orange cat sleeping."/>
+          </button>
+        </div>
+        <div class="companion-bonus">
+          <p class="bonus-title">Class Act</p>
+          <p class="bonus-description">
+            Your orange cat companion provides <span class="bonus-stat">+10% focus</span>
+            when debugging complex systems.
+          </p>
         </div>
       </section>
     </section>
 
     <section class="avatar-layout">
       <div class="avatar-container">
-        <img src="@/assets/images/jp-laptop.png" alt="Character holding laptop" class="avatar-image">
-        <img src="@/assets/images/louie-sitting.png" alt="Character holding laptop" class="avatar-companion">
+        <img
+          src="@/assets/images/jp-laptop.png"
+          alt="Character holding laptop"
+          class="avatar-image"
+        />
+        <img
+          src="@/assets/images/louie-sitting.png"
+          alt="Character holding laptop"
+          class="avatar-companion"
+        />
       </div>
 
       <h2>Janessa Perry</h2>
@@ -109,6 +119,64 @@
   display: flex;
   justify-content: space-between;
   gap: 1rem;
+
+  & > p {
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+}
+
+.role-details {
+  & > * + * {
+    margin-top: 1.2rem;
+  }
+}
+
+.companion-wrapper {
+  & > * + * {
+    margin-top: 0.75rem;
+  }
+}
+
+.companion-button {
+  padding: 0.5rem;
+  width: 4rem;
+  height: 4rem;
+  aspect-ratio: 1/1;
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: 9999px;
+
+  &[aria-pressed="true"] {
+    border-color: var(--color-text-accent);
+  }
+
+  & > img {
+    width: 100%;
+    object-fit: contain;
+  }
+
+}
+
+.companion-bonus {
+  padding: 1rem;
+  background-color: var(--color-surface-dark-muted);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+}
+
+.bonus-title {
+  color: var(--color-text-accent);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.bonus-description {
+  line-height: 1.2;
+}
+
+.bonus-stat {
+  font-weight: 600;
 }
 
 .avatar-layout {
@@ -136,10 +204,7 @@
 .divider {
   width: 100%;
   height: 1px;
-  background: linear-gradient(
-    to right,
-    var(--gradient-neon-bg)
-  );
+  background: linear-gradient(to right, var(--gradient-neon-bg));
 }
 
 @media (min-width: 1024px) {
