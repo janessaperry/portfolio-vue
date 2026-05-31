@@ -5,7 +5,7 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/jp-logo.svg" width="48" />
+    <img alt="Vue logo" class="logo" src="@/assets/logos/jp-logo.svg" width="48" />
 
     <nav>
       <RouterLink to="/">Home</RouterLink>
@@ -24,7 +24,7 @@ import { RouterLink, RouterView } from 'vue-router'
     </div>
 
     <div class="attribution">
-      <img alt="Vue logo" class="logo" src="@/assets/jp-logo.svg" width="24" />
+      <img alt="Vue logo" class="logo" src="@/assets/logos/jp-logo.svg" width="24" />
       <p>Designed & developed by Janessa Perry</p>
     </div>
   </footer>
