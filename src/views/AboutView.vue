@@ -69,8 +69,11 @@
       </section>
     </section>
 
-    <section class="avatar-wrapper">
-      <div>Character image placeholder</div>
+    <section class="avatar-layout">
+      <div class="avatar-container">
+        <img src="@/assets/images/jp-laptop.png" alt="Character holding laptop" class="avatar-image">
+        <img src="@/assets/images/louie-sitting.png" alt="Character holding laptop" class="avatar-companion">
+      </div>
 
       <h2>Janessa Perry</h2>
       <p>Web Developer</p>
@@ -106,8 +109,26 @@
   gap: 1rem;
 }
 
-.avatar-wrapper {
+.avatar-layout {
   flex-basis: 40%;
+}
+
+.avatar-container {
+  position: relative;
+}
+
+.avatar-image {
+  display: block;
+  margin: 0 30% 0 auto;
+  height: 420px;
+}
+
+.avatar-companion {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  max-width: 170px;
 }
 
 .divider {
