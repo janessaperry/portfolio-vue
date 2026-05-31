@@ -16,7 +16,8 @@ import TheWelcome from '../components/TheWelcome.vue'
       </div>
 
       <p>
-        Web developer with a background in design who enjoys figuring things out and building thoughtful web experiences.
+        Web developer with a background in design who enjoys figuring things out and building
+        thoughtful web experiences.
       </p>
     </div>
 
@@ -92,9 +93,7 @@ import TheWelcome from '../components/TheWelcome.vue'
 .work-status-container {
   background: linear-gradient(
     to top right,
-    rgba(149, 218, 197, 0.8),
-    rgba(0, 157, 255, 0.8),
-    rgba(252, 0, 255, 0.8)
+    var(--gradient-neon-bg)
   );
   border-radius: 9999px;
   padding: 1px;
@@ -126,11 +125,8 @@ import TheWelcome from '../components/TheWelcome.vue'
 
   padding: 1rem;
   background-color: var(--color-surface-dark);
-  border-radius: 1rem;
-  box-shadow:
-    inset 0 1px 2px 0 var(--color-shadow-inset-light),
-    inset 0 2px 4px 0 var(--color-shadow-inset),
-    inset 0 -2px 4px 0 var(--color-shadow-inset-dark);
+  border-radius: 1.2rem;
+  box-shadow: var(--shadow-inset-card)
 }
 
 .tech-stack-chips {

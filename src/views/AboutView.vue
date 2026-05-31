@@ -97,6 +97,8 @@
   flex-basis: 60%;
   padding: 1rem;
   background-color: var(--color-surface-dark);
+  border-radius: 1.2rem;
+  box-shadow: var(--shadow-inset-card);
 
   & > * + * {
     margin-top: 2rem;
@@ -133,7 +135,11 @@
 
 .divider {
   width: 100%;
-  border-top: 1px solid var(--color-border);
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    var(--gradient-neon-bg)
+  );
 }
 
 @media (min-width: 1024px) {
