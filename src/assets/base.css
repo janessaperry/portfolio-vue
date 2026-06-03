@@ -62,8 +62,13 @@
 
   --color-link: var(--jp-c-fuschia-50);
   --color-link-alt: var(--jp-c-seafoam-500);
+
   --color-button: #000;
   --color-button-hover: #000;
+
+  --color-selector-bg: color-mix(in srgb, var(--jp-c-blue-700) 40%, transparent);
+  --color-selector-bg-active: color-mix(in srgb, var(--jp-c-blue-700) 100%, transparent);
+  --color-selector-border-active: var(--jp-c-seafoam-500);
 
   --color-shadow-inset-light: rgba(227, 173, 227, 0.15);
   --color-shadow-inset: rgba(252, 0, 255, 0.15);
@@ -101,4 +106,11 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
   color: var(--color-heading-light);
   text-transform: lowercase;
+}
+
+input,
+textarea,
+select,
+button {
+  font-family: inherit;
 }
