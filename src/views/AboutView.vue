@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import CompanionSelector from '../components/CompanionSelector.vue'
 </script>
+
 <template>
   <section class="hero">
     <h1>My Experience</h1>
@@ -8,7 +10,7 @@
   <div class="experience-layout">
     <section class="experience-container">
       <div>
-        <h2>Select a role to learn more</h2>
+        <p>Select a role to learn more</p>
 
         <div class="role-selection">
           <button aria-pressed="true" class="role-button">
@@ -19,7 +21,7 @@
             </span>
           </button>
 
-          <button aria-pressed="true" class="role-button">
+          <button aria-pressed="false" class="role-button">
             <img src="@/assets/logos/jp-logo.svg" alt="BrainStation Logo" class="role-logo" />
             <span class="role-content-wrapper">
               <span class="role-title">Teaching Assistant</span>
@@ -27,9 +29,21 @@
             </span>
           </button>
 
-          <button aria-pressed="false" class="role-button">Teaching Assistant</button>
-          <button aria-pressed="false" class="role-button">Web Designer</button>
-          <button aria-pressed="false" class="role-button">Other roles</button>
+          <button aria-pressed="false" class="role-button">
+            <img src="@/assets/logos/jp-logo.svg" alt="Janessa Perry Logo" class="role-logo" />
+            <span class="role-content-wrapper">
+              <span class="role-title">Web Designer</span>
+              <span class="role-company">Independent Contractor</span>
+            </span>
+          </button>
+
+          <button aria-pressed="false" class="role-button">
+            <img src="@/assets/logos/jp-logo.svg" alt="Janessa Perry Logo" class="role-logo" />
+            <span class="role-content-wrapper">
+              <span class="role-title">Senior Manager, UI Design & Solutions</span>
+              <span class="role-company">The Sentis Group</span>
+            </span>
+          </button>
         </div>
       </div>
 
@@ -62,28 +76,7 @@
       </section>
 
       <div class="divider"></div>
-
-      <section class="companion-wrapper">
-        <h3>Select a companion</h3>
-        <div class="companion-selection">
-          <button aria-pressed="true" class="companion-button" aria-label="Class Act">
-            <img src="@/assets/images/louie-sitting.png" alt="Orange cat sitting." />
-          </button>
-          <button aria-pressed="false" class="companion-button" aria-label="Big Stretchies">
-            <img src="@/assets/images/louie-stretching.png" alt="Orange cat stretching." />
-          </button>
-          <button aria-pressed="false" class="companion-button" aria-label="Snoozie Boos">
-            <img src="@/assets/images/louie-sleeping.png" alt="Orange cat sleeping." />
-          </button>
-        </div>
-        <div class="companion-bonus">
-          <p class="bonus-title">Class Act</p>
-          <p class="bonus-description">
-            Your orange cat companion provides <span class="bonus-stat">+10% focus</span>
-            when debugging complex systems.
-          </p>
-        </div>
-      </section>
+      <CompanionSelector/>
     </section>
 
     <section class="avatar-layout">
@@ -141,12 +134,18 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  flex-shrink: 0;
   width: max-content;
   padding: 0.5rem;
   background-color: var(--color-selector-bg);
   border: 1px solid var(--color-border);
   border-radius: 0.5rem;
   color: var(--color-text-light);
+  transition: background-color 0.5s ease;
+
+  &:hover {
+    background-color: var(--color-selector-bg-active);
+  }
 
   &[aria-pressed='true'] {
     background-color: var(--color-selector-bg-active);
@@ -185,58 +184,6 @@
   & > * + * {
     margin-top: 1.2rem;
   }
-}
-
-.companion-wrapper {
-  & > * + * {
-    margin-top: 0.75rem;
-  }
-}
-
-.companion-selection {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.companion-button {
-  padding: 0.5rem;
-  width: 4rem;
-  height: 4rem;
-  aspect-ratio: 1/1;
-  background-color: var(--color-selector-bg);
-  border: 1px solid var(--color-border);
-  border-radius: 9999px;
-
-  &[aria-pressed='true'] {
-    background-color: var(--color-selector-bg-active);
-    border-color: var(--color-text-accent);
-  }
-
-  & > img {
-    width: 100%;
-    object-fit: contain;
-  }
-}
-
-.companion-bonus {
-  padding: 1rem;
-  background-color: var(--color-surface-dark-muted);
-  border: 1px solid var(--color-border);
-  border-radius: 0.75rem;
-}
-
-.bonus-title {
-  color: var(--color-text-accent);
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-
-.bonus-description {
-  line-height: 1.2;
-}
-
-.bonus-stat {
-  font-weight: 600;
 }
 
 .avatar-layout {
