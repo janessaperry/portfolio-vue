@@ -59,6 +59,7 @@
   --color-text-light: var(--jp-c-blue-50);
   --color-text-dark: var(--jp-c-blue-700);
   --color-text-accent: var(--jp-c-seafoam-500);
+  --color-text-accent-alt: var(--jp-c-fuschia-100);
 
   --color-link: var(--jp-c-fuschia-50);
   --color-link-alt: var(--jp-c-seafoam-500);
