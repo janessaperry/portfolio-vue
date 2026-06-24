@@ -75,6 +75,8 @@
   --color-shadow-inset: rgba(252, 0, 255, 0.15);
   --color-shadow-inset-dark: rgba(12, 12, 52, 0.5);
 
+  --color-scrollbar-on-dark: var(--jp-c-fuschia-muted);
+
   --shadow-inset-card: inset 0 1px 2px 0 var(--color-shadow-inset-light), inset 0 2px 4px 0 var(--color-shadow-inset), inset 0 -2px 4px 0 var(--color-shadow-inset-dark);
 
   --gradient-neon-bg: rgba(149, 218, 197, 0.8), rgba(0, 157, 255, 0.8), rgba(252, 0, 255, 0.8);
