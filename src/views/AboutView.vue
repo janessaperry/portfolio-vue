@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { experienceDetails, type ExperienceDetails } from '../data/experienceDetails.ts'
 import type { CompanionKey } from '../types'
 import { companionData } from '../data/companionData.ts'
 
@@ -7,8 +8,15 @@ import CompanionSelector from '../components/CompanionSelector.vue'
 import RoleSelector from '../components/RoleSelector.vue'
 
 const selectedCompanion = ref<CompanionKey>('classy')
+
 function onCompanionChange(selectedId: CompanionKey) {
   selectedCompanion.value = selectedId
+}
+
+const selectedRole = ref<ExperienceDetails>(experienceDetails[0]!)
+
+function onRoleChange(clickedRole: ExperienceDetails) {
+  selectedRole.value = clickedRole
 }
 </script>
 
@@ -19,26 +27,33 @@ function onCompanionChange(selectedId: CompanionKey) {
 
   <div class="experience-layout">
     <section class="experience-container">
-      <RoleSelector />
+      <RoleSelector :selectedRole="selectedRole" @role-change="onRoleChange" />
       <div class="divider"></div>
       <CompanionSelector
         :selected-companion="selectedCompanion"
-        :onCompanionChange="onCompanionChange"
+        @companion-change="onCompanionChange"
       />
     </section>
 
     <section class="avatar-layout">
       <div class="avatar-container">
-        <img
-          src="@/assets/images/jp-laptop.png"
-          alt="Character holding laptop"
-          class="avatar-image"
-        />
-        <img
-          :src="companionData[selectedCompanion].imageSrc"
-          alt="Character holding laptop"
-          class="avatar-companion"
-        />
+        <div class="avatar-images-wrapper">
+          <img
+            :src="selectedRole.pixelLogo"
+            :alt="`${selectedRole.company} Logo`"
+            class="avatar-laptop-sticker"
+          />
+          <img
+            src="@/assets/images/jp-laptop.png"
+            alt="Character holding laptop"
+            class="avatar-image"
+          />
+          <img
+            :src="companionData[selectedCompanion].imageSrc"
+            alt="Orange cat companion"
+            class="avatar-companion"
+          />
+        </div>
       </div>
 
       <div class="avatar-info">
@@ -103,27 +118,39 @@ function onCompanionChange(selectedId: CompanionKey) {
   }
 }
 
+.avatar-images-wrapper {
+  position: relative;
+  height: 100%;
+  width: fit-content;
+  left: 60%;
+  transform: translateX(-50%);
+}
+
 .avatar-image {
-  display: block;
-  margin: 0 auto 0 40vw;
   height: 100%;
 
   @media screen and (min-width: 768px) {
-    margin: 0 30% 0 auto;
     max-height: 420px;
   }
 }
 
+.avatar-laptop-sticker {
+  z-index: 10;
+  position: absolute;
+  top: 44%;
+  left: 48%;
+  transform: rotate(-15deg);
+}
+
 .avatar-companion {
-  display: block;
   position: absolute;
   bottom: 0;
-  left: 25vw;
-  max-width: 100px;
+  left: -30%;
+  max-width: 140px;
 
   @media screen and (min-width: 768px) {
-    left: 0;
-    max-width: 170px;
+    left: -40%;
+    max-width: 160px;
   }
 }
 

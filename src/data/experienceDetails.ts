@@ -6,6 +6,7 @@ export type ExperienceDetails = {
   description: string[];
   skillsAndTools: string[];
   brandLogo: string;
+  pixelLogo: string;
 }
 
 export const experienceDetails: ExperienceDetails[] = [
@@ -30,7 +31,8 @@ export const experienceDetails: ExperienceDetails[] = [
       "Figma",
       "Tailwind CSS",
     ],
-    brandLogo: "/src/assets/logos/jp-logo.svg"
+    brandLogo: "/src/assets/logos/jp-logo.svg",
+    pixelLogo: "/src/assets/images/jp-logo-pixelated.png"
   },
   {
     id: "teaching-assistant--brainstation",
@@ -65,7 +67,8 @@ export const experienceDetails: ExperienceDetails[] = [
       "Debugging",
       "Code Reviews",
     ],
-    brandLogo: "/src/assets/logos/brainstation-logo.svg"
+    brandLogo: "/src/assets/logos/brainstation-logo.svg",
+    pixelLogo: "/src/assets/images/brainstation-logo-pixelated.png"
   },
   {
     id: "web-design--freelance",
@@ -89,7 +92,8 @@ export const experienceDetails: ExperienceDetails[] = [
       "Affinity Photo",
       "WordPress",
     ],
-    brandLogo: "/src/assets/logos/jp-logo.svg"
+    brandLogo: "/src/assets/logos/jp-logo.svg",
+    pixelLogo: "/src/assets/images/jp-logo-pixelated.png",
   },
   {
     id: "senior-manager-ui-design--sentis",
@@ -116,7 +120,8 @@ export const experienceDetails: ExperienceDetails[] = [
       "WordPress",
       "Asana",
     ],
-    brandLogo: "/src/assets/logos/sentis-logo.svg"
+    brandLogo: "/src/assets/logos/sentis-logo.svg",
+    pixelLogo: "/src/assets/images/sentis-logo-pixelated.png",
   },
   {
     id: "manager-ui-design--sentis",
@@ -142,6 +147,7 @@ export const experienceDetails: ExperienceDetails[] = [
       "Affinity Designer",
       "Asana",
     ],
-    brandLogo: "/src/assets/logos/sentis-logo.svg"
+    brandLogo: "/src/assets/logos/sentis-logo.svg",
+    pixelLogo: "/src/assets/images/sentis-logo-pixelated.png",
   },
 ];
