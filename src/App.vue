@@ -64,8 +64,12 @@ nav a:first-of-type {
 }
 
 main {
-  padding: 4rem 0;
+  padding: 2rem 0;
   flex-grow: 1;
+
+  @media screen and (min-width: 768px) {
+    padding: 4rem 0;
+  }
 }
 
 footer {

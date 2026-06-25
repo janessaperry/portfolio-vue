@@ -1,52 +1,29 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import type { CompanionKey } from '../types'
+import { companionData } from '../data/companionData.ts'
 
-type CompanionKey = 'classy' | 'stretch' | 'snooze'
-type CompanionEntry = {
-  title: string;
-  description: string;
-  imageSrc: string;
-  imageAlt: string
+interface Props {
+  selectedCompanion: CompanionKey
 }
-type CompanionData = Record<CompanionKey, CompanionEntry>
+const { selectedCompanion } = defineProps<Props>()
 
-const selectedCompanion = ref<CompanionKey>('classy')
-const companionData: CompanionData = {
-  classy: {
-    title: 'Class Act',
-    description: `Your orange cat companion provides <span class="bonus-stat">+10% focus</span> when debugging complex systems.`,
-    imageSrc: "/src/assets/images/louie-sitting.png",
-    imageAlt: "Orange cat sitting"
-  },
-  stretch: {
-    title: 'Big Stretchies',
-    description: `Your orange cat companion's morning stretch unlocks <span class="bonus-stat">+15% momentum</span> entering a flow state.`,
-    imageSrc: "/src/assets/images/louie-stretching.png",
-    imageAlt: "Orange cat stretching"
-  },
-  snooze: {
-    title: 'Snoozie Boos',
-    description: `Your orange cat companion sleeps on it, <span class="bonus-stat">+15% clarity</span> guaranteed by morning.`,
-    imageSrc: "/src/assets/images/louie-sleeping.png",
-    imageAlt: "Orange cat sleeping"
-  },
-}
+const emit = defineEmits<{
+  companionChange: [selectedId: CompanionKey]
+}>()
 
-function onCompanionChange(selectedId: CompanionKey) {
-  selectedCompanion.value = selectedId
-}
 </script>
 
 <template>
   <section class="companion-wrapper">
     <h3>Select a companion</h3>
     <div class="companion-selection">
-      <button v-for="(value, key) in companionData"
+      <button
+        v-for="(value, key) in companionData"
         :key="key"
         :id="key"
         :aria-pressed="selectedCompanion === key"
         :aria-label="value.title"
-        @click="onCompanionChange(key)"
+        @click="emit('companionChange', key)"
         class="companion-button"
       >
         <img :src="value.imageSrc" :alt="value.imageAlt" />
@@ -81,7 +58,6 @@ function onCompanionChange(selectedId: CompanionKey) {
   border: 1px solid var(--color-border);
   border-radius: 9999px;
   transition: background-color 0.5s ease;
-  cursor: pointer;
 
   &:hover {
     background-color: var(--color-selector-bg-active);
