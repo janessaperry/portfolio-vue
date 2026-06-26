@@ -28,7 +28,9 @@ function onRoleChange(clickedRole: ExperienceDetails) {
   <div class="experience-layout">
     <section class="experience-container">
       <RoleSelector :selectedRole="selectedRole" @role-change="onRoleChange" />
+
       <div class="divider"></div>
+
       <CompanionSelector
         :selected-companion="selectedCompanion"
         @companion-change="onCompanionChange"

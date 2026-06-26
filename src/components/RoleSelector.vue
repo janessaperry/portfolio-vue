@@ -1,24 +1,76 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { type ExperienceDetails, experienceDetails } from '../data/experienceDetails.js'
+import { PhArrowLeft, PhArrowRight } from '@phosphor-icons/vue'
+import { type ExperienceDetails, experienceDetails } from '../data/experienceDetails.ts'
 
-const selectedRole = ref<ExperienceDetails>(experienceDetails[0]!)
+const props = defineProps<{
+  selectedRole: ExperienceDetails
+}>()
 
-function handleRoleClick(clickedRole: ExperienceDetails) {
-  console.log(clickedRole)
-  selectedRole.value = clickedRole
+const emit = defineEmits<{
+  roleChange: [selectedRole: ExperienceDetails]
+}>()
+
+function handlePrevRole() {
+  const currentRoleIndex = experienceDetails.findIndex((role) => props.selectedRole.id === role.id)
+  const prevRole =
+    currentRoleIndex > 0 ? experienceDetails[currentRoleIndex - 1] : props.selectedRole
+  if (prevRole && prevRole.id !== props.selectedRole.id) {
+    handleRoleChange(prevRole)
+  }
+}
+
+function handleNextRole() {
+  const currentRoleIndex = experienceDetails.findIndex((role) => props.selectedRole.id === role.id)
+  const nextRole = currentRoleIndex < experienceDetails.length - 1 ? experienceDetails[currentRoleIndex + 1] :
+    props.selectedRole;
+  if (nextRole && nextRole.id !== props.selectedRole.id) {
+    handleRoleChange(nextRole)
+  }
+}
+
+function handleRoleChange(role: ExperienceDetails) {
+  emit('roleChange', role)
+
+  const clickedItem = document.getElementById(role.id)
+  if (clickedItem) {
+    clickedItem.scrollIntoView({
+      behavior: 'smooth',
+      inline: 'start',
+      block: 'nearest',
+    })
+  }
 }
 </script>
 
 <template>
   <div class="role-selector">
-    <p>Select a role to learn more</p>
+    <div class="role-nav">
+      <p>Select a role to learn more</p>
+      <div class="role-nav-buttons">
+        <button
+          class="role-nav-button role-prev"
+          aria-label="View previous role"
+          @click="handlePrevRole"
+        >
+          <ph-arrow-left aria-hidden="true" size="20" />
+        </button>
+        <button
+          class="role-nav-button role-next"
+          aria-label="View next role"
+          @click="handleNextRole"
+        >
+          <ph-arrow-right aria-hidden="true" size="20" />
+        </button>
+      </div>
+    </div>
+
     <div class="role-selection">
       <button
         v-for="role in experienceDetails"
         :key="role.id"
+        :id="role.id"
         :aria-pressed="selectedRole?.id === role.id"
-        @click="handleRoleClick(role)"
+        @click="handleRoleChange(role)"
         class="role-button"
       >
         <img :src="role.brandLogo" :alt="`${role.company} Logo`" class="role-logo" />
@@ -66,14 +118,49 @@ function handleRoleClick(clickedRole: ExperienceDetails) {
   }
 }
 
+.role-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.role-nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.role-nav-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0.5rem;
+  background-color: var(--color-selector-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 9999px;
+  color: var(--color-link);
+  transition: background-color 0.5s ease;
+
+  &:hover {
+    background-color: var(--color-selector-bg-active);
+  }
+}
+
 .role-selection {
   display: flex;
   gap: 1rem;
   width: 100%;
-  padding-bottom: 0.5rem;
+  padding-bottom: 1rem;
   overflow-x: scroll;
   scrollbar-color: var(--color-scrollbar-on-dark) transparent;
   scrollbar-width: thin;
+
+  scroll-snap-type: x mandatory;
 }
 
 .role-button {
@@ -88,6 +175,8 @@ function handleRoleClick(clickedRole: ExperienceDetails) {
   border-radius: 0.5rem;
   color: var(--color-text-light);
   transition: background-color 0.5s ease;
+
+  scroll-snap-align: start;
 
   &:hover {
     background-color: var(--color-selector-bg-active);
