@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { PhArrowUpRight } from '@phosphor-icons/vue'
 import type { Project } from '../types'
 
 interface Props {
@@ -31,7 +32,7 @@ const { project, showHighlights = false } = defineProps<Props>()
     <div v-if="showHighlights" class="project-highlights">
       <h3>Highlights</h3>
       <ul>
-        <li v-for="[highlight, index] of project.experiencePoints" :key="index">
+        <li v-for="(highlight, index) of project.highlights" :key="index">
           {{ highlight }}
         </li>
       </ul>
@@ -39,9 +40,16 @@ const { project, showHighlights = false } = defineProps<Props>()
 
     <template v-if="project.githubRepos || project.liveUrl">
       <div class="card-actions">
-        <a v-if="project.liveUrl" :href="project.liveUrl" target="_blank" class="button"
-          >View live</a
+        <a
+          v-if="project.liveUrl"
+          :href="project.liveUrl"
+          target="_blank"
+          referrerpolicy="no-referrer"
+          class="button primary"
         >
+          View live
+          <ph-arrow-up-right />
+        </a>
 
         <template v-if="project.githubRepos">
           <a
@@ -49,9 +57,11 @@ const { project, showHighlights = false } = defineProps<Props>()
             :key="repo.url"
             :href="repo.url"
             target="_blank"
-            class="button"
-            >{{ repo.title }}</a
+            referrerpolicy="no-referrer"
+            class="button secondary"
           >
+            {{ repo.title }}
+          </a>
         </template>
       </div>
     </template>
@@ -101,5 +111,40 @@ const { project, showHighlights = false } = defineProps<Props>()
   background-color: var(--color-surface-dark-muted);
   border: 1px solid var(--color-border);
   border-radius: 8px;
+}
+
+.card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  font-family: var(--jp-font-heading), sans-serif;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+
+  &.primary {
+    background-color: var(--color-button);
+    border: 1px solid var(--color-button);
+
+    &:hover {
+      background-color: var(--color-button-hover);
+      border-color: var(--jp-c-fuschia-neon);
+    }
+  }
+
+  &.secondary {
+    background-color: var(--color-button-secondary);
+    border: 1px solid var(--color-border);
+
+    &:hover {
+      background-color: var(--color-button-secondary-hover);
+      border-color: var(--color-button-secondary-border);
+    }
+  }
 }
 </style>

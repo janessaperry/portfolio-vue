@@ -27,6 +27,6 @@ export type Project = {
   type: string;
   yearCompleted: string;
   teaser: string;
-  experiencePoints?: string[];
+  highlights: string[];
   skillsAndTools: string[];
 }

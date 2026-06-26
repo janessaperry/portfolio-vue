@@ -64,8 +64,12 @@
   --color-link: var(--jp-c-fuschia-50);
   --color-link-alt: var(--jp-c-seafoam-500);
 
-  --color-button: #000;
-  --color-button-hover: #000;
+  --color-button: var(--jp-c-fuschia-500);
+  --color-button-hover: var(--jp-c-fuschia-900);
+  --color-button-border: var(--jp-c-fuschia-neon);
+  --color-button-secondary: var(--jp-c-blue-300);
+  --color-button-secondary-hover: var(--jp-c-blue-700);
+  --color-button-secondary-border: var(--jp-c-seafoam-500);
 
   --color-selector-bg: color-mix(in srgb, var(--jp-c-blue-700) 40%, transparent);
   --color-selector-bg-active: color-mix(in srgb, var(--jp-c-blue-700) 100%, transparent);
