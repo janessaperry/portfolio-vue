@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+import ProjectCard from '../components/ProjectCard.vue'
+import { allProjects } from '../data/allProjects.ts'
 </script>
 
 <template>
@@ -23,45 +24,11 @@ import TheWelcome from '../components/TheWelcome.vue'
 
     <div class="project-showcase">
       <h2>Showcase</h2>
-      <article class="project-card">
-        <div>image placeholder</div>
-
-        <div class="project-overview">
-          <p>Personal Project • Ongoing</p>
-          <h2>Project Name</h2>
-          <p>Full Stack Developer & Designer</p>
-
-          <p>
-            Developing a full-stack video game collection tracker with custom React hooks,
-            multi-category filtering with URL syncs, JWT authentication with secure password reset,
-            and a PostgreSQL backend synced from the IGDB API.
-          </p>
-        </div>
-
-        <ul class="tech-stack-chips">
-          <li class="chip">React</li>
-          <li class="chip">TypeScript</li>
-          <li class="chip">Node.js</li>
-          <li class="chip">PostgreSQL</li>
-        </ul>
-
-        <div class="project-highlights">
-          <h3>Highlights</h3>
-          <ul>
-            <li>Highlight 1</li>
-            <li>Highlight 2</li>
-          </ul>
-        </div>
-
-        <div class="card-actions">
-          <a href="#" target="_blank" class="button">View demo</a>
-          <a href="#" target="_blank" class="button">Github</a>
-        </div>
-      </article>
+      <template v-for="project of allProjects" :key="project.id">
+        <ProjectCard v-if="project.showcase" :project="project" />
+      </template>
     </div>
   </section>
-
-  <!--  <TheWelcome />-->
 </template>
 
 <style scoped>
@@ -73,11 +40,21 @@ import TheWelcome from '../components/TheWelcome.vue'
   & h1 {
     font-size: var(--font-size-display);
   }
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2.5rem;
+  }
 }
 
 .intro {
   & > * + * {
     margin-top: 2rem;
+  }
+
+  @media (min-width: 1024px) {
+    flex-basis: 40%;
   }
 }
 
@@ -91,10 +68,7 @@ import TheWelcome from '../components/TheWelcome.vue'
 }
 
 .work-status-container {
-  background: linear-gradient(
-    to top right,
-    var(--gradient-neon-bg)
-  );
+  background: linear-gradient(to top right, var(--gradient-neon-bg));
   border-radius: 9999px;
   padding: 1px;
   width: fit-content;
@@ -118,45 +92,12 @@ import TheWelcome from '../components/TheWelcome.vue'
   }
 }
 
-.project-card {
+.project-showcase {
   & > * + * {
     margin-top: 1.4rem;
   }
 
-  padding: 1rem;
-  background-color: var(--color-surface-dark);
-  border-radius: 1.2rem;
-  box-shadow: var(--shadow-inset-card)
-}
-
-.tech-stack-chips {
-  list-style: none;
-  padding-inline: 0;
-  display: flex;
-  gap: 0.5rem;
-}
-
-.chip {
-  padding: 0.25rem 0.5rem;
-  color: var(--color-text-accent);
-  line-height: 1.2;
-  background-color: var(--color-surface-dark-muted);
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-}
-
-@media (min-width: 1024px) {
-  .hero {
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 2.5rem;
-  }
-
-  .intro {
-    flex-basis: 40%;
-  }
-
-  .project-showcase {
+  @media (min-width: 1024px) {
     flex-basis: 60%;
   }
 }
