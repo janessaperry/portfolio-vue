@@ -5,12 +5,10 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logos/jp-logo.svg" width="48" />
-
     <nav>
-      <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/about">About</RouterLink>
-      <RouterLink to="/projects">Projects</RouterLink>
+      <RouterLink to="/about" class="nav-link">About</RouterLink>
+      <RouterLink to="/"><img alt="Vue logo" class="logo" src="@/assets/logos/jp-logo.svg" width="48" /></RouterLink>
+      <RouterLink to="/projects" class="nav-link">Projects</RouterLink>
     </nav>
   </header>
 
@@ -32,48 +30,57 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <style scoped>
 header {
+  position: sticky;
+  top: 0;
   width: 100%;
-  padding-bottom: 1rem;
+  padding: 1rem 1rem;
   display: flex;
   align-items: center;
   gap: 2rem;
 }
 
 nav {
-  font-size: 1rem;
-  margin: 0 auto;
   display: flex;
   align-items: center;
   gap: 1rem;
+  padding: 0.25rem 1.5rem;
+  margin: 0 auto;
+  background-color: var(--color-surface-dark);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  font-size: 1rem;
 }
 
-nav a.router-link-exact-active {
+.nav-link {
+  font-family: var(--jp-font-heading), sans-serif;
+  font-size: 1.125rem;
+  text-transform: lowercase;
   color: var(--color-text-light);
-}
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
+  &:hover {
+    text-decoration: underline dotted;
+    text-decoration-color: var(--color-link);
+    text-underline-offset: 0.375rem;
+  }
 
-nav a {
-  display: inline-block;
-}
-
-nav a:first-of-type {
-  border: 0;
+  &.router-link-exact-active {
+    color: var(--color-link);
+    text-decoration: underline dotted;
+    text-underline-offset: 0.375rem;
+  }
 }
 
 main {
-  padding: 2rem 0;
+  padding: 2rem 1rem;
   flex-grow: 1;
 
   @media screen and (min-width: 768px) {
-    padding: 4rem 0;
+    padding: 4rem 1rem;
   }
 }
 
 footer {
-  padding-top: 1rem;
+  padding: 1.5rem 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -84,9 +91,5 @@ footer {
   display: flex;
   align-items: center;
   gap: 1rem;
-}
-
-@media (min-width: 1024px) {
-
 }
 </style>

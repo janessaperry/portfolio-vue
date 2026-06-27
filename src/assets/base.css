@@ -9,7 +9,7 @@
   --font-size-base: 1.125rem;
   --font-size-lg: 1.4rem;
   --font-size-xl: 1.8rem;
-  --font-size-display: 4rem;
+  --font-size-display: 3rem;
 
   /* primitive colors */
   /*--jp-c-white: #FFFFFF;*/
@@ -56,13 +56,14 @@
 
   --color-heading-light: var(--jp-c-fuschia-100);
   --color-heading-dark: var(--jp-c-fuschia-500);
+  --color-text-light-muted: color-mix(in srgb, var(--jp-c-blue-50) 80%, transparent);;
   --color-text-light: var(--jp-c-blue-50);
   --color-text-dark: var(--jp-c-blue-700);
   --color-text-accent: var(--jp-c-seafoam-500);
   --color-text-accent-alt: var(--jp-c-fuschia-100);
 
   --color-link: var(--jp-c-fuschia-50);
-  --color-link-alt: var(--jp-c-seafoam-500);
+  --color-link-hover: var(--jp-c-fuschia-300);
 
   --color-button: var(--jp-c-fuschia-500);
   --color-button-hover: var(--jp-c-fuschia-900);
@@ -105,7 +106,7 @@ body {
   background: var(--color-background);
   font-family: var(--jp-font-body), sans-serif;
   font-size: var(--font-size-base);
-  line-height: 1.6;
+  line-height: 1.4;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -128,4 +129,15 @@ button {
 
 button {
   cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-link);
+  transition: 0.4s;
+  padding: 0.25rem;
+
+  &:hover {
+    color: var(--color-link-hover);
+  }
 }
