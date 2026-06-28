@@ -4,53 +4,71 @@ import { allProjects } from '../data/allProjects.ts'
 </script>
 
 <template>
-  <section class="hero">
-    <div class="intro">
-      <h1>Hey there, I'm Janessa</h1>
-      <p class="tagline">
-        Bringing pixels to life with <span class="accent">&lt;code/&gt;</span> and
-        <span class="accent">curiosity()</span>.
+  <div class="page-title">
+    <h1>Hey there, I'm Janessa</h1>
+  </div>
+
+  <div class="layout-wrapper">
+    <section class="intro">
+      <p class="about">
+        I'm a web developer with a background in design who enjoys figuring things out and building
+        thoughtful web experiences.
       </p>
 
       <div class="work-status-container">
         <p class="work-status">Available for work</p>
       </div>
 
-      <p>
-        Web developer with a background in design who enjoys figuring things out and building
-        thoughtful web experiences.
+      <p class="tagline">
+        Bringing pixels to life with <span class="accent">&lt;code/&gt;</span> and
+        <span class="accent">curiosity()</span>.
       </p>
-    </div>
+    </section>
 
-    <div class="project-showcase">
-      <h2>Showcase</h2>
+    <section class="project-showcase">
+      <h2 class="showcase-title">Project Showcase</h2>
       <template v-for="project of allProjects" :key="project.id">
         <ProjectCard v-if="project.showcase" :project="project" />
       </template>
-    </div>
-  </section>
+    </section>
+  </div>
 </template>
 
 <style scoped>
-.hero {
+.page-title {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  @media screen and (min-width: 1024px) {
+    margin-bottom: 3rem;
+  }
+
+  & h1 {
+    font-size: 2.5rem;
+
+    @media (min-width: 1024px) {
+      font-size: 3rem;
+    }
+  }
+}
+
+.layout-wrapper {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-
-  & h1 {
-    font-size: var(--font-size-display);
-  }
+  text-align: center;
 
   @media (min-width: 1024px) {
     flex-direction: row;
     align-items: flex-start;
     gap: 2.5rem;
+    text-align: left;
   }
 }
 
 .intro {
   & > * + * {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
   }
 
   @media (min-width: 1024px) {
@@ -58,9 +76,13 @@ import { allProjects } from '../data/allProjects.ts'
   }
 }
 
+.about {
+  font-size: 1.25rem;
+}
+
 .tagline {
   font-family: var(--jp-font-mono), monospace;
-  font-size: var(--font-size-lg);
+  font-size: 1.125rem;
 }
 
 .accent {
@@ -72,6 +94,13 @@ import { allProjects } from '../data/allProjects.ts'
   border-radius: 9999px;
   padding: 1px;
   width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media screen and (min-width: 1024px) {
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 
 .work-status {
@@ -85,16 +114,16 @@ import { allProjects } from '../data/allProjects.ts'
   &::before {
     content: '';
     display: block;
-    width: 8px;
-    height: 8px;
+    width: 0.5rem;
+    height: 0.5rem;
     background-color: #95dac5;
-    border-radius: 9999px;
+    border-radius: 999px;
   }
 }
 
 .project-showcase {
   & > * + * {
-    margin-top: 1.4rem;
+    margin-top: 1.2rem;
   }
 
   @media (min-width: 1024px) {

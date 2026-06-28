@@ -21,8 +21,10 @@ function handlePrevRole() {
 
 function handleNextRole() {
   const currentRoleIndex = experienceDetails.findIndex((role) => props.selectedRole.id === role.id)
-  const nextRole = currentRoleIndex < experienceDetails.length - 1 ? experienceDetails[currentRoleIndex + 1] :
-    props.selectedRole;
+  const nextRole =
+    currentRoleIndex < experienceDetails.length - 1
+      ? experienceDetails[currentRoleIndex + 1]
+      : props.selectedRole
   if (nextRole && nextRole.id !== props.selectedRole.id) {
     handleRoleChange(nextRole)
   }
@@ -45,7 +47,7 @@ function handleRoleChange(role: ExperienceDetails) {
 <template>
   <div class="role-selector">
     <div class="role-nav">
-      <p>Select a role to learn more</p>
+      <p>Select a role to learn more.</p>
       <div class="role-nav-buttons">
         <button
           class="role-nav-button role-prev"
@@ -165,18 +167,22 @@ function handleRoleChange(role: ExperienceDetails) {
 
 .role-button {
   display: flex;
-  align-items: center;
   gap: 0.5rem;
   flex-shrink: 0;
   width: max-content;
+  max-width: 100%;
   padding: 0.5rem;
   background-color: var(--color-selector-bg);
   border: 1px solid var(--color-border);
   border-radius: 0.5rem;
   color: var(--color-text-light);
   transition: background-color 0.5s ease;
-
   scroll-snap-align: start;
+
+  @media screen and (min-width: 768px) {
+    align-items: center;
+    width: max-content;
+  }
 
   &:hover {
     background-color: var(--color-selector-bg-active);
@@ -188,8 +194,13 @@ function handleRoleChange(role: ExperienceDetails) {
   }
 
   & > .role-logo {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+
+    @media screen and (min-width: 768px) {
+      width: 2rem;
+      height: 2rem;
+    }
   }
 
   & .role-title {
@@ -206,8 +217,13 @@ function handleRoleChange(role: ExperienceDetails) {
 
 .role-meta {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  gap: 1rem;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    gap: 1rem;
+  }
 
   & > p {
     font-size: 1rem;

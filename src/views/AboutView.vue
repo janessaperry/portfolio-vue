@@ -142,13 +142,18 @@ function onRoleChange(clickedRole: ExperienceDetails) {
   top: 44%;
   left: 48%;
   transform: rotate(-15deg);
+  width: 1.25rem;
+
+  @media screen and (min-width: 768px) {
+    width: initial;
+  }
 }
 
 .avatar-companion {
   position: absolute;
   bottom: 0;
   left: -30%;
-  max-width: 140px;
+  max-width: 100px;
 
   @media screen and (min-width: 768px) {
     left: -40%;

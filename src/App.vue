@@ -7,7 +7,9 @@ import { RouterLink, RouterView } from 'vue-router'
   <header>
     <nav>
       <RouterLink to="/about" class="nav-link">About</RouterLink>
-      <RouterLink to="/"><img alt="Vue logo" class="logo" src="@/assets/logos/jp-logo.svg" width="48" /></RouterLink>
+      <RouterLink to="/" class="nav-link">
+        <img alt="JP logo" class="logo" src="@/assets/logos/jp-logo.svg" />
+      </RouterLink>
       <RouterLink to="/projects" class="nav-link">Projects</RouterLink>
     </nav>
   </header>
@@ -22,7 +24,7 @@ import { RouterLink, RouterView } from 'vue-router'
     </div>
 
     <div class="attribution">
-      <img alt="Vue logo" class="logo" src="@/assets/logos/jp-logo.svg" width="24" />
+      <img alt="JP logo" class="logo" src="@/assets/logos/jp-logo.svg" />
       <p>Designed & developed by Janessa Perry</p>
     </div>
   </footer>
@@ -32,6 +34,7 @@ import { RouterLink, RouterView } from 'vue-router'
 header {
   position: sticky;
   top: 0;
+  z-index: 100;
   width: 100%;
   padding: 1rem 1rem;
   display: flex;
@@ -40,22 +43,32 @@ header {
 }
 
 nav {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.25rem 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
   margin: 0 auto;
   background-color: var(--color-surface-dark);
   border: 1px solid var(--color-border);
   border-radius: 999px;
-  font-size: 1rem;
+
+  @media screen and (min-width: 768px) {
+    padding: 0.5rem 1.5rem;
+  }
 }
 
 .nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: var(--jp-font-heading), sans-serif;
-  font-size: 1.125rem;
+  font-size: 1rem;
   text-transform: lowercase;
   color: var(--color-text-light);
+
+  @media screen and (min-width: 768px) {
+    font-size: 1.125rem;
+  }
 
   &:hover {
     text-decoration: underline dotted;
@@ -67,6 +80,14 @@ nav {
     color: var(--color-link);
     text-decoration: underline dotted;
     text-underline-offset: 0.375rem;
+  }
+}
+
+.nav-link .logo {
+  width: 2.5rem;
+
+  @media screen and (min-width: 768px) {
+    width: 3rem;
   }
 }
 
@@ -91,5 +112,9 @@ footer {
   display: flex;
   align-items: center;
   gap: 1rem;
+}
+
+.attribution .logo {
+  width: 2rem;
 }
 </style>

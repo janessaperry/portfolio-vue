@@ -5,19 +5,38 @@ import { allProjects } from '../data/allProjects.ts'
 
 <template>
   <div class="projects">
-    <h1>Projects</h1>
-
+    <div class="title-wrapper">
+      <h1 class="page-title">Projects</h1>
+      <p class="sub-title">Check out some of my recent work below.</p>
+    </div>
     <section>
-      <h2>Check out my recent work below.</h2>
-
       <div class="project-cards">
-        <ProjectCard v-for="project in allProjects" :key="project.id" :project="project" :show-highlights="true" />
+        <ProjectCard
+          v-for="project in allProjects"
+          :key="project.id"
+          :project="project"
+          :show-highlights="true"
+        />
       </div>
     </section>
   </div>
 </template>
 
 <style scoped>
+.projects {
+  & > * + * {
+    margin-top: 1.5rem;
+  }
+}
+
+.title-wrapper {
+  text-align: center;
+}
+
+.sub-title {
+  font-size: 1.5rem;
+}
+
 .project-cards {
   display: grid;
   gap: 1rem;

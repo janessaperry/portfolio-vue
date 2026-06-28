@@ -11,60 +11,63 @@ const { project, showHighlights = false } = defineProps<Props>()
 </script>
 
 <template>
-  <article class="project-card" :class="project.showcase ? 'showcase' : ''">
+  <article class="project-card" :class="{ showcase: project.showcase }">
     <img
       :src="project.thumbnailInfo.filePath"
       :alt="project.thumbnailInfo.altText"
       class="project-thumbnail"
     />
 
-    <div class="project-overview">
-      <p>{{ project.type }} • {{ project.yearCompleted }}</p>
-      <h2>{{ project.title }}</h2>
-      <p>{{ project.role }}</p>
-      <p>{{ project.teaser }}</p>
-    </div>
+      <div class="project-overview">
+        <p class="project-meta">{{ project.type }} • {{ project.yearCompleted }}</p>
+        <div>
+          <h2>{{ project.title }}</h2>
+          <p class="project-role">{{ project.role }}</p>
+        </div>
+        <p>{{ project.teaser }}</p>
+      </div>
 
-    <ul class="tech-stack-chips">
-      <li v-for="skill of project.skillsAndTools" :key="skill" class="chip">{{ skill }}</li>
-    </ul>
-
-    <div v-if="showHighlights" class="project-highlights">
-      <h3>Highlights</h3>
-      <ul>
-        <li v-for="(highlight, index) of project.highlights" :key="index">
-          {{ highlight }}
-        </li>
+      <ul class="tech-stack-chips">
+        <li v-for="skill of project.skillsAndTools" :key="skill" class="chip">{{ skill }}</li>
       </ul>
-    </div>
 
-    <template v-if="project.githubRepos || project.liveUrl">
-      <div class="card-actions">
-        <a
-          v-if="project.liveUrl"
-          :href="project.liveUrl"
-          target="_blank"
-          referrerpolicy="no-referrer"
-          class="button primary"
-        >
-          View live
-          <ph-arrow-up-right />
-        </a>
+      <div v-if="showHighlights" class="highlights">
+        <h3>Highlights</h3>
+        <ul>
+          <li v-for="(highlight, index) of project.highlights" :key="index" class="highlight">
+            {{ highlight }}
+          </li>
+        </ul>
+      </div>
 
-        <template v-if="project.githubRepos">
+      <template v-if="project.githubRepos || project.liveUrl">
+        <div class="card-actions">
           <a
-            v-for="repo of project.githubRepos"
-            :key="repo.url"
-            :href="repo.url"
+            v-if="project.liveUrl"
+            :href="project.liveUrl"
             target="_blank"
             referrerpolicy="no-referrer"
-            class="button secondary"
+            class="button primary"
           >
-            {{ repo.title }}
+            View live
+            <ph-arrow-up-right size="18" />
           </a>
-        </template>
-      </div>
-    </template>
+
+          <template v-if="project.githubRepos">
+            <a
+              v-for="repo of project.githubRepos"
+              :key="repo.url"
+              :href="repo.url"
+              target="_blank"
+              referrerpolicy="no-referrer"
+              class="button secondary"
+            >
+              {{ repo.title }}
+              <ph-arrow-up-right size="18" />
+            </a>
+          </template>
+        </div>
+      </template>
   </article>
 </template>
 
@@ -90,6 +93,25 @@ const { project, showHighlights = false } = defineProps<Props>()
   */
 }
 
+.project-overview {
+  & > * + * {
+    margin-top: 0.5rem;
+  }
+}
+
+.project-meta {
+  color: var(--color-text-light-muted);
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-family: var(--jp-font-mono), monospace;
+  text-transform: uppercase;
+}
+
+.project-role {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
 .project-thumbnail {
   display: block;
   width: 100%;
@@ -107,10 +129,21 @@ const { project, showHighlights = false } = defineProps<Props>()
 .chip {
   padding: 0.25rem 0.5rem;
   color: var(--color-text-accent);
+  font-size: 1rem;
   line-height: 1.2;
   background-color: var(--color-surface-dark-muted);
   border: 1px solid var(--color-border);
   border-radius: 8px;
+}
+
+.highlights {
+  & > * + * {
+    margin-top: 0.5rem;
+  }
+}
+
+.highlight {
+  font-size: 1rem;
 }
 
 .card-actions {
@@ -122,8 +155,10 @@ const { project, showHighlights = false } = defineProps<Props>()
 .button {
   display: flex;
   align-items: center;
+  gap: 0.5rem;
   font-family: var(--jp-font-heading), sans-serif;
   font-weight: 600;
+  font-size: 1rem;
   padding: 0.5rem 1rem;
   border-radius: 999px;
 
