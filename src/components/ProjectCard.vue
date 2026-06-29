@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { PhArrowUpRight } from '@phosphor-icons/vue'
 import type { Project } from '../types'
+import BaseLinkButton from './BaseLinkButton.vue'
 
 interface Props {
   project: Project
@@ -18,56 +19,49 @@ const { project, showHighlights = false } = defineProps<Props>()
       class="project-thumbnail"
     />
 
-      <div class="project-overview">
-        <p class="project-meta">{{ project.type }} • {{ project.yearCompleted }}</p>
-        <div>
-          <h2>{{ project.title }}</h2>
-          <p class="project-role">{{ project.role }}</p>
-        </div>
-        <p>{{ project.teaser }}</p>
+    <div class="project-overview">
+      <p class="project-meta">{{ project.type }} • {{ project.yearCompleted }}</p>
+      <div>
+        <h2>{{ project.title }}</h2>
+        <p class="project-role">{{ project.role }}</p>
       </div>
+      <p>{{ project.teaser }}</p>
+    </div>
 
-      <ul class="tech-stack-chips">
-        <li v-for="skill of project.skillsAndTools" :key="skill" class="chip">{{ skill }}</li>
+    <ul class="tech-stack-chips">
+      <li v-for="skill of project.skillsAndTools" :key="skill" class="chip">{{ skill }}</li>
+    </ul>
+
+    <div v-if="showHighlights" class="highlights">
+      <h3>Highlights</h3>
+      <ul>
+        <li v-for="(highlight, index) of project.highlights" :key="index" class="highlight">
+          {{ highlight }}
+        </li>
       </ul>
+    </div>
 
-      <div v-if="showHighlights" class="highlights">
-        <h3>Highlights</h3>
-        <ul>
-          <li v-for="(highlight, index) of project.highlights" :key="index" class="highlight">
-            {{ highlight }}
-          </li>
-        </ul>
+    <template v-if="project.githubRepos || project.liveUrl">
+      <div class="card-actions">
+        <BaseLinkButton
+          v-if="project.liveUrl"
+          label="View live"
+          :url="project.liveUrl"
+          :icon="PhArrowUpRight"
+        />
+
+        <template v-if="project.githubRepos">
+          <BaseLinkButton
+            v-for="repo of project.githubRepos"
+            :key="repo.url"
+            :label="repo.title"
+            :url="repo.url"
+            :icon="PhArrowUpRight"
+            variant="secondary"
+          />
+        </template>
       </div>
-
-      <template v-if="project.githubRepos || project.liveUrl">
-        <div class="card-actions">
-          <a
-            v-if="project.liveUrl"
-            :href="project.liveUrl"
-            target="_blank"
-            referrerpolicy="no-referrer"
-            class="button primary"
-          >
-            View live
-            <ph-arrow-up-right size="18" />
-          </a>
-
-          <template v-if="project.githubRepos">
-            <a
-              v-for="repo of project.githubRepos"
-              :key="repo.url"
-              :href="repo.url"
-              target="_blank"
-              referrerpolicy="no-referrer"
-              class="button secondary"
-            >
-              {{ repo.title }}
-              <ph-arrow-up-right size="18" />
-            </a>
-          </template>
-        </div>
-      </template>
+    </template>
   </article>
 </template>
 
@@ -150,36 +144,5 @@ const { project, showHighlights = false } = defineProps<Props>()
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-}
-
-.button {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--jp-font-heading), sans-serif;
-  font-weight: 600;
-  font-size: 1rem;
-  padding: 0.5rem 1rem;
-  border-radius: 999px;
-
-  &.primary {
-    background-color: var(--color-button);
-    border: 1px solid var(--color-button);
-
-    &:hover {
-      background-color: var(--color-button-hover);
-      border-color: var(--jp-c-fuschia-neon);
-    }
-  }
-
-  &.secondary {
-    background-color: var(--color-button-secondary);
-    border: 1px solid var(--color-border);
-
-    &:hover {
-      background-color: var(--color-button-secondary-hover);
-      border-color: var(--color-button-secondary-border);
-    }
-  }
 }
 </style>
