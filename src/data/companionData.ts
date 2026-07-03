@@ -1,7 +1,7 @@
 import type { CompanionData } from '../types'
 import louieSitting from '../assets/images/louie-sitting.png'
 import louieStretching from '../assets/images/louie-stretching.png'
-import louieSleeping from '../assets/images/louie-stretching.png'
+import louieSleeping from '../assets/images/louie-sleeping.png'
 
 export const companionData: CompanionData = {
   classy: {
