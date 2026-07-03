@@ -8,6 +8,12 @@ export type ExperienceDetails = {
   brandLogo: string;
   pixelLogo: string;
 }
+import jpLogo from "../assets/logos/jp-logo.svg"
+import jpPixelLogo from "../assets/images/jp-logo-pixelated.png"
+import brainstationLogo from "../assets/logos/brainstation-logo.svg"
+import brainstationPixelLogo from "../assets/images/brainstation-logo-pixelated.png"
+import sentisLogo from "../assets/logos/sentis-logo.svg"
+import sentisPixelLogo from "../assets/images/sentis-logo-pixelated.png"
 
 export const experienceDetails: ExperienceDetails[] = [
   {
@@ -31,8 +37,8 @@ export const experienceDetails: ExperienceDetails[] = [
       "Figma",
       "Tailwind CSS",
     ],
-    brandLogo: "/src/assets/logos/jp-logo.svg",
-    pixelLogo: "/src/assets/images/jp-logo-pixelated.png"
+    brandLogo: jpLogo,
+    pixelLogo: jpPixelLogo
   },
   {
     id: "teaching-assistant--brainstation",
@@ -67,8 +73,8 @@ export const experienceDetails: ExperienceDetails[] = [
       "Debugging",
       "Code Reviews",
     ],
-    brandLogo: "/src/assets/logos/brainstation-logo.svg",
-    pixelLogo: "/src/assets/images/brainstation-logo-pixelated.png"
+    brandLogo: brainstationLogo,
+    pixelLogo: brainstationPixelLogo
   },
   {
     id: "web-design--freelance",
@@ -92,8 +98,8 @@ export const experienceDetails: ExperienceDetails[] = [
       "Affinity Photo",
       "WordPress",
     ],
-    brandLogo: "/src/assets/logos/jp-logo.svg",
-    pixelLogo: "/src/assets/images/jp-logo-pixelated.png",
+    brandLogo: jpLogo,
+    pixelLogo: jpPixelLogo,
   },
   {
     id: "senior-manager-ui-design--sentis",
@@ -120,8 +126,8 @@ export const experienceDetails: ExperienceDetails[] = [
       "WordPress",
       "Asana",
     ],
-    brandLogo: "/src/assets/logos/sentis-logo.svg",
-    pixelLogo: "/src/assets/images/sentis-logo-pixelated.png",
+    brandLogo: sentisLogo,
+    pixelLogo: sentisPixelLogo,
   },
   {
     id: "manager-ui-design--sentis",
@@ -147,7 +153,7 @@ export const experienceDetails: ExperienceDetails[] = [
       "Affinity Designer",
       "Asana",
     ],
-    brandLogo: "/src/assets/logos/sentis-logo.svg",
-    pixelLogo: "/src/assets/images/sentis-logo-pixelated.png",
+    brandLogo: sentisLogo,
+    pixelLogo: sentisPixelLogo,
   },
 ];
