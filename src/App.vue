@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PhGithubLogo } from '@phosphor-icons/vue'
+import { PhEnvelope, PhGithubLogo, PhLinkedinLogo } from '@phosphor-icons/vue'
 import { RouterLink, RouterView } from 'vue-router'
 </script>
 
@@ -20,7 +20,15 @@ import { RouterLink, RouterView } from 'vue-router'
 
   <footer>
     <div class="socials">
-      <ph-github-logo size="32" />
+      <a href="https://github.com/janessaperry" target="_blank" rel="noreferrer">
+        <ph-github-logo class="social-icon" />
+      </a>
+      <a href="https://www.linkedin.com/in/janessa-perry" target="_blank" rel="noreferrer">
+        <ph-linkedin-logo class="social-icon" />
+      </a>
+      <a href="mailto:hello@janessaperry.com" target="_blank" rel="noreferrer">
+        <ph-envelope class="social-icon" />
+      </a>
     </div>
 
     <div class="attribution">
@@ -103,18 +111,41 @@ main {
 footer {
   padding: 1.5rem 1rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
 }
 
-.socials,
-.attribution {
+.socials {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
+}
+
+.social-icon {
+  font-size: 1.5rem;
+
+  @media screen and (min-width: 768px) {
+    font-size: 1.75rem;
+  }
+}
+
+.attribution {
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 .attribution .logo {
-  width: 2rem;
+  width: 1.5rem;
+
+  @media screen and (min-width: 768px) {
+    width: 2rem;
+  }
 }
 </style>

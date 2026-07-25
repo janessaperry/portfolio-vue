@@ -4,12 +4,10 @@ import { allProjects } from '../data/allProjects.ts'
 </script>
 
 <template>
-  <div class="page-title">
-    <h1>Hey there, I'm Janessa</h1>
-  </div>
-
   <div class="layout-wrapper">
     <section class="intro">
+      <h1>Hey there, I'm Janessa</h1>
+
       <p class="about">
         I'm a web developer with a background in design who enjoys figuring things out and building
         thoughtful web experiences.
@@ -35,34 +33,15 @@ import { allProjects } from '../data/allProjects.ts'
 </template>
 
 <style scoped>
-.page-title {
-  text-align: center;
-  margin-bottom: 2rem;
-
-  @media screen and (min-width: 1024px) {
-    margin-bottom: 3rem;
-  }
-
-  & h1 {
-    font-size: 2.5rem;
-
-    @media (min-width: 1024px) {
-      font-size: 3rem;
-    }
-  }
-}
-
 .layout-wrapper {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  text-align: center;
 
   @media (min-width: 1024px) {
     flex-direction: row;
     align-items: flex-start;
     gap: 2.5rem;
-    text-align: left;
   }
 }
 
