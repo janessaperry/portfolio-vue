@@ -7,7 +7,7 @@ import { allProjects } from '../data/allProjects.ts'
   <div class="projects">
     <section class="title-wrapper">
       <h1 class="page-title">Projects</h1>
-      <p class="sub-title">Check out some of my recent work below.</p>
+      <p class="sub-title">Explore some of my recent work below.</p>
     </section>
 
     <section>
@@ -35,7 +35,11 @@ import { allProjects } from '../data/allProjects.ts'
 }
 
 .sub-title {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+
+  @media screen and (min-width: 768px) {
+    font-size: 1.5rem;
+  }
 }
 
 .project-cards {

@@ -32,7 +32,7 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
 <template>
   <section class="title-wrapper">
     <h1 class="page-title">My Experience</h1>
-    <p class="sub-title">Check out my career journey below!</p>
+    <p class="sub-title">Check out my career journey below.</p>
   </section>
 
   <div class="experience-layout">
@@ -79,11 +79,19 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
 <style>
 .title-wrapper {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 2rem;
+  }
 }
 
 .sub-title {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+
+  @media screen and (min-width: 768px) {
+    font-size: 1.5rem;
+  }
 }
 
 .experience-layout {
@@ -121,12 +129,15 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
   top: 0;
   background-color: var(--color-background);
   padding-bottom: 1rem;
-  padding-top: 5rem;
 
   @media screen and (min-width: 768px) {
     width: 40%;
     height: fit-content;
   }
+}
+
+.avatar-layout.scrolled {
+  padding-top: 5rem;
 }
 
 .avatar-container {
