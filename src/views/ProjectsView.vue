@@ -5,10 +5,11 @@ import { allProjects } from '../data/allProjects.ts'
 
 <template>
   <div class="projects">
-    <div class="title-wrapper">
+    <section class="title-wrapper">
       <h1 class="page-title">Projects</h1>
       <p class="sub-title">Check out some of my recent work below.</p>
-    </div>
+    </section>
+
     <section>
       <div class="project-cards">
         <ProjectCard

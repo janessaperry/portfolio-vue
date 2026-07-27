@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { experienceDetails, type ExperienceDetails } from '../data/experienceDetails.ts'
 import type { CompanionKey } from '../types'
 import { companionData } from '../data/companionData.ts'
@@ -18,11 +18,21 @@ const selectedRole = ref<ExperienceDetails>(experienceDetails[0]!)
 function onRoleChange(clickedRole: ExperienceDetails) {
   selectedRole.value = clickedRole
 }
+
+const avatarScrolled = ref(false)
+
+function onScroll() {
+  avatarScrolled.value = window.scrollY > 80
+}
+
+onMounted(() => window.addEventListener('scroll', onScroll, { passive: true }))
+onUnmounted(() => window.removeEventListener('scroll', onScroll))
 </script>
 
 <template>
-  <section class="hero">
-    <h1 class="hero-title">My Experience</h1>
+  <section class="title-wrapper">
+    <h1 class="page-title">My Experience</h1>
+    <p class="sub-title">Check out my career journey below!</p>
   </section>
 
   <div class="experience-layout">
@@ -37,7 +47,7 @@ function onRoleChange(clickedRole: ExperienceDetails) {
       />
     </section>
 
-    <section class="avatar-layout">
+    <section class="avatar-layout" :class="{ scrolled: avatarScrolled }">
       <div class="avatar-container">
         <div class="avatar-images-wrapper">
           <img
@@ -67,12 +77,13 @@ function onRoleChange(clickedRole: ExperienceDetails) {
 </template>
 
 <style>
-.hero {
+.title-wrapper {
+  text-align: center;
   margin-bottom: 2rem;
 }
 
-.hero-title {
-  text-align: center;
+.sub-title {
+  font-size: 1.5rem;
 }
 
 .experience-layout {
@@ -106,14 +117,31 @@ function onRoleChange(clickedRole: ExperienceDetails) {
     margin-top: 1rem;
   }
 
+  position: sticky;
+  top: 0;
+  background-color: var(--color-background);
+  padding-bottom: 1rem;
+  padding-top: 5rem;
+
   @media screen and (min-width: 768px) {
     width: 40%;
+    height: fit-content;
   }
 }
 
 .avatar-container {
   position: relative;
   height: 30vh;
+  transition: height 0.4s ease;
+
+  @media screen and (min-width: 768px) {
+    height: max-content;
+    transition: none;
+  }
+}
+
+.avatar-layout.scrolled .avatar-container {
+  height: 25vh;
 
   @media screen and (min-width: 768px) {
     height: max-content;
@@ -124,8 +152,12 @@ function onRoleChange(clickedRole: ExperienceDetails) {
   position: relative;
   height: 100%;
   width: fit-content;
-  left: 60%;
+  left: 55%;
   transform: translateX(-50%);
+
+  @media screen and (min-width: 768px) {
+    left: 60%;
+  }
 }
 
 .avatar-image {
@@ -143,6 +175,16 @@ function onRoleChange(clickedRole: ExperienceDetails) {
   left: 48%;
   transform: rotate(-15deg);
   width: 1.25rem;
+  transition: width 0.4s ease;
+
+  @media screen and (min-width: 768px) {
+    width: initial;
+    transition: none;
+  }
+}
+
+.avatar-layout.scrolled .avatar-laptop-sticker {
+  width: 0.75rem;
 
   @media screen and (min-width: 768px) {
     width: initial;
@@ -153,17 +195,33 @@ function onRoleChange(clickedRole: ExperienceDetails) {
   position: absolute;
   bottom: 0;
   left: -30%;
-  max-width: 100px;
+  height: 40%;
 
   @media screen and (min-width: 768px) {
     left: -40%;
-    max-width: 160px;
   }
 }
 
 .avatar-name,
 .avatar-title {
   text-align: center;
+  transition: font-size 0.4s ease;
+}
+
+.avatar-layout.scrolled .avatar-name {
+  font-size: 1rem;
+
+  @media screen and (min-width: 768px) {
+    font-size: revert;
+  }
+}
+
+.avatar-layout.scrolled .avatar-title {
+  font-size: 0.75rem;
+
+  @media screen and (min-width: 768px) {
+    font-size: revert;
+  }
 }
 
 .divider {
