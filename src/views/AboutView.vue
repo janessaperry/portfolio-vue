@@ -131,7 +131,7 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
 
 .avatar-container {
   position: relative;
-  height: 30vh;
+  height: 20vh;
   transition: height 0.4s ease;
 
   @media screen and (min-width: 768px) {
