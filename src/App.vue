@@ -6,11 +6,11 @@ import { RouterLink, RouterView } from 'vue-router'
 <template>
   <header>
     <nav>
-      <RouterLink to="/about" class="nav-link">About</RouterLink>
-      <RouterLink to="/" class="nav-link">
+      <RouterLink to="/experience" class="nav-link">Experience</RouterLink>
+      <RouterLink to="/" class="nav-link nav-link--logo">
         <img alt="JP logo" class="logo" src="@/assets/logos/jp-logo.svg" />
       </RouterLink>
-      <RouterLink to="/projects" class="nav-link">Projects</RouterLink>
+      <RouterLink to="/projects" class="nav-link">Work & Projects</RouterLink>
     </nav>
   </header>
 
@@ -52,7 +52,7 @@ header {
 
 nav {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 2fr;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
   margin: 0 auto;
