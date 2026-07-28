@@ -54,7 +54,7 @@ nav {
   display: grid;
   grid-template-columns: 2fr 1fr 2fr;
   gap: 0.5rem;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
   margin: 0 auto;
   background-color: var(--color-surface-dark);
   border: 1px solid var(--color-border);
@@ -71,7 +71,7 @@ nav {
   align-items: center;
   justify-content: center;
   font-family: var(--jp-font-heading), sans-serif;
-  font-size: 1rem;
+  font-size: 0.875rem;
   text-transform: lowercase;
   color: var(--color-text-light);
 

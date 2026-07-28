@@ -80,11 +80,6 @@ const { project, showHighlights = false } = defineProps<Props>()
     padding: 1.5rem;
   }
 
-  /*
-  &.showcase {
-    background-color: var(--color-surface-light);
-  }
-  */
 }
 
 .project-overview {

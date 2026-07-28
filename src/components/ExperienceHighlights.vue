@@ -84,6 +84,6 @@ import { PhCertificate, PhCode, PhLaptop } from '@phosphor-icons/vue'
 
 .highlight-info {
   font-size: 1rem;
-  color: var(--color-text-light-muted)
+  color: var(--color-text-light-muted);
 }
 </style>

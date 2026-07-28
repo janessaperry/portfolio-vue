@@ -131,10 +131,16 @@ button {
   cursor: pointer;
 }
 
+:focus-visible {
+  outline: 2px solid var(--jp-c-fuschia-neon);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
 a {
   text-decoration: none;
   color: var(--color-link);
-  transition: 0.4s;
+  transition: color 0.4s;
   padding: 0.25rem;
 
   &:hover {
