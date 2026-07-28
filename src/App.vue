@@ -61,6 +61,7 @@ nav {
   border-radius: 999px;
 
   @media screen and (min-width: 768px) {
+    gap: 1rem;
     padding: 0.5rem 1.5rem;
   }
 }
