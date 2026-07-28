@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { watch } from 'vue'
 import { PhArrowLeft, PhArrowRight } from '@phosphor-icons/vue'
 import { type ExperienceDetails, experienceDetails } from '../data/experienceDetails.ts'
 
@@ -32,16 +33,14 @@ function handleNextRole() {
 
 function handleRoleChange(role: ExperienceDetails) {
   emit('roleChange', role)
-
-  const clickedItem = document.getElementById(role.id)
-  if (clickedItem) {
-    clickedItem.scrollIntoView({
-      behavior: 'smooth',
-      inline: 'start',
-      block: 'nearest',
-    })
-  }
 }
+
+function scrollRoleIntoView(role: ExperienceDetails) {
+  const el = document.getElementById(role.id)
+  if (el) el.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' })
+}
+
+watch(() => props.selectedRole, scrollRoleIntoView)
 </script>
 
 <template>
@@ -84,7 +83,7 @@ function handleRoleChange(role: ExperienceDetails) {
     </div>
   </div>
 
-  <section class="role-details">
+  <section id="role-details" class="role-details">
     <div>
       <h2 class="role-title">{{ selectedRole.jobTitle }}</h2>
       <div class="role-meta">

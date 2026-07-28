@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, nextTick, ref } from 'vue'
 import AvatarCard from '../components/AvatarCard.vue'
 import ExperienceHighlights from '../components/ExperienceHighlights.vue'
 import { experienceDetails, type ExperienceDetails } from '../data/experienceDetails.ts'
 import type { CompanionKey } from '../types'
+import { usePageScroll } from '../composables/usePageScroll.ts'
 
 import CompanionSelector from '../components/CompanionSelector.vue'
 import RoleSelector from '../components/RoleSelector.vue'
@@ -18,6 +19,45 @@ const selectedRole = ref<ExperienceDetails>(experienceDetails[0]!)
 
 function onRoleChange(clickedRole: ExperienceDetails) {
   selectedRole.value = clickedRole
+}
+
+const currentRoleIndex = computed(() =>
+  experienceDetails.findIndex((r) => r.id === selectedRole.value.id),
+)
+const prevRole = computed(() =>
+  currentRoleIndex.value > 0 ? experienceDetails[currentRoleIndex.value - 1] ?? null : null,
+)
+const nextRole = computed(() =>
+  currentRoleIndex.value < experienceDetails.length - 1
+    ? experienceDetails[currentRoleIndex.value + 1] ?? null
+    : null,
+)
+
+const { isScrolled } = usePageScroll()
+
+function scrollToRoleDetails() {
+  nextTick(() => {
+    const el = document.getElementById('role-details')
+    if (!el) return
+    const avatarBar = document.querySelector('.avatar-layout') as HTMLElement
+    const offset = avatarBar ? avatarBar.offsetHeight : 0
+    const top = el.getBoundingClientRect().top + window.scrollY - offset
+    window.scrollTo({ top, behavior: 'smooth' })
+  })
+}
+
+function goToPrevRole() {
+  if (prevRole.value) {
+    onRoleChange(prevRole.value)
+    scrollToRoleDetails()
+  }
+}
+
+function goToNextRole() {
+  if (nextRole.value) {
+    onRoleChange(nextRole.value)
+    scrollToRoleDetails()
+  }
 }
 </script>
 
@@ -44,8 +84,15 @@ function onRoleChange(clickedRole: ExperienceDetails) {
       />
     </section>
 
-    <div class="experience-sidebar">
-      <AvatarCard :selected-role="selectedRole" :selected-companion="selectedCompanion" />
+    <div class="experience-sidebar" :class="{ scrolled: isScrolled }">
+      <AvatarCard
+        :selected-role="selectedRole"
+        :selected-companion="selectedCompanion"
+        :prev-role="prevRole"
+        :next-role="nextRole"
+        @prev="goToPrevRole"
+        @next="goToNextRole"
+      />
       <ExperienceHighlights />
     </div>
   </div>
@@ -90,6 +137,12 @@ function onRoleChange(clickedRole: ExperienceDetails) {
   flex-direction: column;
   gap: 1rem;
   order: 1;
+
+  &.scrolled {
+    @media screen and (max-width: 767px) {
+      padding-top: calc(15vh + 6rem);
+    }
+  }
 
   @media screen and (min-width: 768px) {
     width: 40%;

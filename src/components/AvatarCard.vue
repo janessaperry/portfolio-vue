@@ -1,28 +1,31 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue'
+import { PhArrowLeft, PhArrowRight } from '@phosphor-icons/vue'
 import { companionData } from '../data/companionData.ts'
 import type { ExperienceDetails } from '../data/experienceDetails.ts'
 import type { CompanionKey } from '../types'
+import { usePageScroll } from '../composables/usePageScroll.ts'
 
 interface Props {
   selectedRole: ExperienceDetails
   selectedCompanion: CompanionKey
+  prevRole: ExperienceDetails | null
+  nextRole: ExperienceDetails | null
 }
 
-const { selectedRole, selectedCompanion } = defineProps<Props>()
+const { selectedRole, selectedCompanion, prevRole, nextRole } = defineProps<Props>()
 
-const avatarScrolled = ref(false)
+const emit = defineEmits<{ prev: []; next: [] }>()
 
-function onScroll() {
-  avatarScrolled.value = window.scrollY > 160
-}
-
-onMounted(() => window.addEventListener('scroll', onScroll, { passive: true }))
-onUnmounted(() => window.removeEventListener('scroll', onScroll))
+const { isScrolled } = usePageScroll()
 </script>
 
 <template>
-  <section class="avatar-layout" :class="{ scrolled: avatarScrolled }">
+  <section class="avatar-layout" :class="{ scrolled: isScrolled }">
+    <button class="role-nav-btn role-prev" :disabled="!prevRole" aria-label="View later role" @click="emit('prev')">
+      <PhArrowLeft aria-hidden="true" />
+      <span class="role-nav-label">later</span>
+    </button>
+
     <div class="avatar-container">
       <span class="star star--1"></span>
       <span class="star star--2"></span>
@@ -48,6 +51,11 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
       </div>
     </div>
 
+    <button class="role-nav-btn role-next" :disabled="!nextRole" aria-label="View earlier role" @click="emit('next')">
+      <PhArrowRight aria-hidden="true" />
+      <span class="role-nav-label">earlier</span>
+    </button>
+
     <div class="avatar-info">
       <h2 class="avatar-name">Janessa Perry</h2>
       <p class="avatar-title">Web Developer</p>
@@ -65,7 +73,6 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
   background-color: var(--color-surface-dark);
   border-radius: 1.2rem;
   box-shadow: var(--shadow-inset-card);
-  transition: padding-top 1s ease;
 
   @media screen and (min-width: 768px) {
     height: fit-content;
@@ -74,18 +81,54 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
 }
 
 .avatar-layout.scrolled {
-  position: fixed;
-  width: 100%;
-  left: 0;
-  top: 0;
-  padding-top: 5rem;
-  border-radius: 0;
-  background-color: var(--color-background);
+  @media screen and (max-width: 767px) {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    border-radius: 0;
+    background-color: var(--color-background);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 6rem;
 
-  @media screen and (min-width: 768px) {
-    padding-top: revert;
-    transition: none;
+    & > * + * {
+      margin-top: 0;
+    }
   }
+}
+
+.role-nav-btn {
+  display: none;
+
+  .avatar-layout.scrolled & {
+    @media screen and (max-width: 767px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+      background: none;
+      border: none;
+      color: var(--color-text-accent-alt);
+      font-size: 0.75rem;
+      font-family: var(--jp-font-heading), sans-serif;
+      text-transform: lowercase;
+      width: 5rem;
+      padding: 0;
+
+      &:disabled {
+        opacity: 0.3;
+      }
+    }
+  }
+}
+
+.role-nav-label {
+  font-size: 0.7rem;
+  line-height: 1.2;
+  text-align: center;
 }
 
 .avatar-container {
@@ -182,10 +225,19 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
 }
 
 .avatar-layout.scrolled .avatar-container {
-  height: 25vh;
+  @media screen and (max-width: 767px) {
+    height: 15vh;
+    flex-shrink: 0;
+  }
 
   @media screen and (min-width: 768px) {
     height: max-content;
+  }
+}
+
+.avatar-layout.scrolled .avatar-info {
+  @media screen and (max-width: 767px) {
+    display: none;
   }
 }
 
@@ -215,15 +267,19 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
   top: 44%;
   left: 48%;
   transform: rotate(-15deg);
-  width: 1.25rem;
+  width: clamp(1rem, 2vw, 2rem);
   transition: width 0.4s ease;
 
   @media screen and (min-width: 768px) {
-    width: clamp(1.2rem, 2vw, 2rem);
     transition: none;
   }
 }
 
+.avatar-layout.scrolled .avatar-laptop-sticker {
+  @media screen and (max-width: 767px) {
+    width: 0.75rem;
+  }
+}
 
 .avatar-companion {
   position: absolute;
@@ -242,19 +298,4 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
   transition: font-size 0.4s ease;
 }
 
-.avatar-layout.scrolled .avatar-name {
-  font-size: 1rem;
-
-  @media screen and (min-width: 768px) {
-    font-size: revert;
-  }
-}
-
-.avatar-layout.scrolled .avatar-title {
-  font-size: 0.75rem;
-
-  @media screen and (min-width: 768px) {
-    font-size: revert;
-  }
-}
 </style>
