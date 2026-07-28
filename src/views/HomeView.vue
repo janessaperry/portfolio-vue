@@ -6,7 +6,7 @@ import { allProjects } from '../data/allProjects.ts'
 <template>
   <div class="layout-wrapper">
     <section class="intro">
-      <h1>Hey there, I'm Janessa</h1>
+      <h1 class="page-title">Hey there, I'm Janessa</h1>
 
       <p class="about">
         I'm a web developer with a background in design who enjoys figuring things out and building
@@ -36,7 +36,7 @@ import { allProjects } from '../data/allProjects.ts'
 .layout-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 3rem;
 
   @media (min-width: 1024px) {
     flex-direction: row;
@@ -52,6 +52,14 @@ import { allProjects } from '../data/allProjects.ts'
 
   @media (min-width: 1024px) {
     flex-basis: 40%;
+  }
+}
+
+.page-title {
+  text-align: center;
+
+  @media screen and (min-width: 768px) {
+    text-align: revert;
   }
 }
 
