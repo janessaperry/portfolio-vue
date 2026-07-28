@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import AvatarCard from '../components/AvatarCard.vue'
+import ExperienceHighlights from '../components/ExperienceHighlights.vue'
 import { experienceDetails, type ExperienceDetails } from '../data/experienceDetails.ts'
 import type { CompanionKey } from '../types'
 
@@ -28,6 +29,11 @@ function onRoleChange(clickedRole: ExperienceDetails) {
 
   <div class="experience-layout">
     <section class="experience-container">
+      <p class="lead-in">
+        I'm a full-stack developer with a background in design who enjoys building thoughtful user
+        experiences and solving complex problems.
+      </p>
+
       <RoleSelector :selectedRole="selectedRole" @role-change="onRoleChange" />
 
       <div class="divider"></div>
@@ -38,36 +44,26 @@ function onRoleChange(clickedRole: ExperienceDetails) {
       />
     </section>
 
-    <AvatarCard :selected-role="selectedRole" :selected-companion="selectedCompanion" />
+    <div class="experience-sidebar">
+      <AvatarCard :selected-role="selectedRole" :selected-companion="selectedCompanion" />
+      <ExperienceHighlights />
+    </div>
   </div>
 </template>
 
-<style>
-.title-wrapper {
-  text-align: center;
-  margin-bottom: 1.5rem;
-
-  @media screen and (min-width: 768px) {
-    margin-bottom: 2rem;
-  }
-}
-
-.sub-title {
-  font-size: 1.2rem;
-
-  @media screen and (min-width: 768px) {
-    font-size: 1.5rem;
-  }
-}
-
+<style scoped>
 .experience-layout {
   display: flex;
-  flex-direction: column-reverse;
-  gap: 2rem;
+  flex-direction: column;
+  gap: 1rem;
 
   @media screen and (min-width: 768px) {
     flex-direction: row;
-    gap: 2.5rem
+    gap: 1.5rem;
+  }
+
+  @media screen and (min-width: 1024px) {
+    gap: 2.5rem;
   }
 }
 
@@ -76,6 +72,7 @@ function onRoleChange(clickedRole: ExperienceDetails) {
   background-color: var(--color-surface-dark);
   border-radius: 1.2rem;
   box-shadow: var(--shadow-inset-card);
+  order: 2;
 
   & > * + * {
     margin-top: 2rem;
@@ -84,7 +81,30 @@ function onRoleChange(clickedRole: ExperienceDetails) {
   @media screen and (min-width: 768px) {
     width: 60%;
     padding: 1.4rem;
+    order: 1;
   }
+}
+
+.experience-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  order: 1;
+
+  @media screen and (min-width: 768px) {
+    width: 40%;
+    gap: 1.5rem;
+    order: 2;
+  }
+
+  @media screen and (min-width: 1024px) {
+    gap: 2.5rem;
+  }
+}
+
+.lead-in {
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
 }
 
 .divider {

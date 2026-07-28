@@ -1,5 +1,6 @@
 @import './base.css';
 
+
 #app {
   display: flex;
   flex-direction: column;
@@ -8,4 +9,17 @@
   margin: 0 auto;
   font-weight: normal;
   min-height: 100dvh;
+}
+
+.title-wrapper {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.sub-title {
+  font-size: 1.2rem;
+
+  @media screen and (min-width: 768px) {
+    font-size: 1.5rem;
+  }
 }

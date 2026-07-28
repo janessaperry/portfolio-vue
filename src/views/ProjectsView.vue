@@ -19,75 +19,54 @@ const filterCounts = computed(() => ({
   development: allProjects.filter((p) =>
     p.categories.map((c) => c.toLowerCase()).includes('development'),
   ).length,
-  design: allProjects.filter((p) =>
-    p.categories.map((c) => c.toLowerCase()).includes('design'),
-  ).length,
+  design: allProjects.filter((p) => p.categories.map((c) => c.toLowerCase()).includes('design'))
+    .length,
 }))
 </script>
 
 <template>
-  <div class="projects">
-    <section class="title-wrapper">
-      <h1 class="page-title">Projects</h1>
-      <p class="sub-title">Explore some of my recent work below.</p>
-    </section>
+  <section class="title-wrapper">
+    <h1 class="page-title">Projects</h1>
+    <p class="sub-title">Explore some of my recent work below.</p>
+  </section>
 
-    <section>
-      <div class="filter-group">
-        <button
-          class="filter-btn"
-          :aria-pressed="selectedFilter === 'all'"
-          @click="selectedFilter = 'all'"
-        >
-          All <span class="filter-count">{{ filterCounts.all }}</span>
-        </button>
-        <button
-          class="filter-btn"
-          :aria-pressed="selectedFilter === 'development'"
-          @click="selectedFilter = 'development'"
-        >
-          Development <span class="filter-count">{{ filterCounts.development }}</span>
-        </button>
-        <button
-          class="filter-btn"
-          :aria-pressed="selectedFilter === 'design'"
-          @click="selectedFilter = 'design'"
-        >
-          Design <span class="filter-count">{{ filterCounts.design }}</span>
-        </button>
-      </div>
+  <section>
+    <div class="filter-group">
+      <button
+        class="filter-btn"
+        :aria-pressed="selectedFilter === 'all'"
+        @click="selectedFilter = 'all'"
+      >
+        All <span class="filter-count">{{ filterCounts.all }}</span>
+      </button>
+      <button
+        class="filter-btn"
+        :aria-pressed="selectedFilter === 'development'"
+        @click="selectedFilter = 'development'"
+      >
+        Development <span class="filter-count">{{ filterCounts.development }}</span>
+      </button>
+      <button
+        class="filter-btn"
+        :aria-pressed="selectedFilter === 'design'"
+        @click="selectedFilter = 'design'"
+      >
+        Design <span class="filter-count">{{ filterCounts.design }}</span>
+      </button>
+    </div>
 
-      <div class="project-cards">
-        <ProjectCard
-          v-for="project in filteredProjects"
-          :key="project.id"
-          :project="project"
-          :show-highlights="true"
-        />
-      </div>
-    </section>
-  </div>
+    <div class="project-cards">
+      <ProjectCard
+        v-for="project in filteredProjects"
+        :key="project.id"
+        :project="project"
+        :show-highlights="true"
+      />
+    </div>
+  </section>
 </template>
 
 <style scoped>
-.projects {
-  & > * + * {
-    margin-top: 1.5rem;
-  }
-}
-
-.title-wrapper {
-  text-align: center;
-}
-
-.sub-title {
-  font-size: 1.2rem;
-
-  @media screen and (min-width: 768px) {
-    font-size: 1.5rem;
-  }
-}
-
 .filter-group {
   display: flex;
   align-items: center;
