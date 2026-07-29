@@ -84,16 +84,21 @@ function goToNextRole() {
       />
     </section>
 
-    <div class="experience-sidebar" :class="{ scrolled: isScrolled }">
-      <AvatarCard
-        :selected-role="selectedRole"
-        :selected-companion="selectedCompanion"
-        :prev-role="prevRole"
-        :next-role="nextRole"
-        @prev="goToPrevRole"
-        @next="goToNextRole"
-      />
-      <ExperienceHighlights />
+    <div class="experience-sidebar">
+      <div class="avatar-wrapper" :class="{ scrolled: isScrolled }">
+        <AvatarCard
+          :selected-role="selectedRole"
+          :selected-companion="selectedCompanion"
+          :prev-role="prevRole"
+          :next-role="nextRole"
+          @prev="goToPrevRole"
+          @next="goToNextRole"
+        />
+      </div>
+
+      <div class="highlights-wrapper">
+        <ExperienceHighlights />
+      </div>
     </div>
   </div>
 </template>
@@ -120,6 +125,7 @@ function goToNextRole() {
   border-radius: 1.2rem;
   box-shadow: var(--shadow-inset-card);
   order: 2;
+  min-width: 0;
 
   & > * + * {
     margin-top: 2rem;
@@ -133,9 +139,22 @@ function goToNextRole() {
 }
 
 .experience-sidebar {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  display: contents;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 40%;
+    order: 2;
+  }
+
+  @media screen and (min-width: 1024px) {
+    gap: 2.5rem;
+  }
+}
+
+.avatar-wrapper {
   order: 1;
 
   &.scrolled {
@@ -143,16 +162,10 @@ function goToNextRole() {
       padding-top: calc(15vh + 6rem);
     }
   }
+}
 
-  @media screen and (min-width: 768px) {
-    width: 40%;
-    gap: 1.5rem;
-    order: 2;
-  }
-
-  @media screen and (min-width: 1024px) {
-    gap: 2.5rem;
-  }
+.highlights-wrapper {
+  order: 3;
 }
 
 .lead-in {

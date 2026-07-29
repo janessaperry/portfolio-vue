@@ -127,9 +127,13 @@ watch(() => props.selectedRole, scrollRoleIntoView)
 }
 
 .role-nav-buttons {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
+  display: none;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
 }
 
 .role-nav-button {
