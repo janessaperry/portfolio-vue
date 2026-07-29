@@ -42,9 +42,9 @@ import { PhCertificate, PhCode, PhLaptop } from '@phosphor-icons/vue'
 <style scoped>
 .highlights-container {
   padding: 1rem;
-  background-color: var(--color-surface-dark);
+  background-color: var(--jp-surface-dark);
   border-radius: 1.2rem;
-  box-shadow: var(--shadow-inset-card);
+  box-shadow: var(--jp-shadow-card);
 
   @media screen and (min-width: 768px) {
     padding: 1.4rem;
@@ -69,7 +69,7 @@ import { PhCertificate, PhCode, PhLaptop } from '@phosphor-icons/vue'
 .highlight-icon {
   flex-shrink: 0;
   font-size: 1.5rem;
-  color: var(--color-text-accent);
+  color: var(--jp-text-accent);
 }
 
 .content-wrapper {
@@ -83,7 +83,7 @@ import { PhCertificate, PhCode, PhLaptop } from '@phosphor-icons/vue'
 }
 
 .highlight-info {
-  font-size: 1rem;
-  color: var(--color-text-light-muted);
+  font-size: var(--jp-font-size-base);
+  color: var(--jp-text-muted);
 }
 </style>

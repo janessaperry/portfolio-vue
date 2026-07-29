@@ -145,14 +145,14 @@ watch(() => props.selectedRole, scrollRoleIntoView)
   width: 2.5rem;
   height: 2.5rem;
   padding: 0.5rem;
-  background-color: var(--color-selector-bg);
-  border: 1px solid var(--color-border);
-  border-radius: 9999px;
-  color: var(--color-link);
-  transition: background-color 0.5s ease;
+  background-color: var(--jp-selector-bg);
+  border: 1px solid var(--jp-border);
+  border-radius: var(--jp-radius-pill);
+  color: var(--jp-link);
+  transition: background-color var(--jp-duration-slow) var(--jp-ease-base);
 
   &:hover {
-    background-color: var(--color-selector-bg-active);
+    background-color: var(--jp-selector-bg-active);
   }
 }
 
@@ -162,7 +162,7 @@ watch(() => props.selectedRole, scrollRoleIntoView)
   width: 100%;
   padding-bottom: 1rem;
   overflow-x: scroll;
-  scrollbar-color: var(--color-scrollbar-on-dark) transparent;
+  scrollbar-color: var(--jp-scrollbar) transparent;
   scrollbar-width: thin;
 
   scroll-snap-type: x mandatory;
@@ -175,11 +175,11 @@ watch(() => props.selectedRole, scrollRoleIntoView)
   width: max-content;
   max-width: 100%;
   padding: 0.5rem;
-  background-color: var(--color-selector-bg);
-  border: 1px solid var(--color-border);
-  border-radius: 0.5rem;
-  color: var(--color-text-light);
-  transition: background-color 0.5s ease;
+  background-color: var(--jp-selector-bg);
+  border: 1px solid var(--jp-border);
+  border-radius: var(--jp-radius-sm);
+  color: var(--jp-text);
+  transition: background-color var(--jp-duration-slow) var(--jp-ease-base);
   scroll-snap-align: start;
 
   @media screen and (min-width: 768px) {
@@ -188,12 +188,12 @@ watch(() => props.selectedRole, scrollRoleIntoView)
   }
 
   &:hover {
-    background-color: var(--color-selector-bg-active);
+    background-color: var(--jp-selector-bg-active);
   }
 
   &[aria-pressed='true'] {
-    background-color: var(--color-selector-bg-active);
-    border-color: var(--color-selector-border-active);
+    background-color: var(--jp-selector-bg-active);
+    border-color: var(--jp-selector-border-active);
   }
 
   & > .role-logo {
@@ -229,7 +229,7 @@ watch(() => props.selectedRole, scrollRoleIntoView)
   }
 
   & > p {
-    font-size: 1rem;
+    font-size: var(--jp-font-size-base);
     font-weight: 600;
   }
 }
@@ -256,10 +256,10 @@ watch(() => props.selectedRole, scrollRoleIntoView)
 
 .role-skill-item {
   padding: 0 0.5rem;
-  font-size: 1rem;
-  color: var(--color-text-accent);
-  background-color: var(--color-surface-dark-muted);
-  border: 1px solid var(--color-border);
+  font-size: var(--jp-font-size-base);
+  color: var(--jp-text-accent);
+  background-color: var(--jp-surface-dark-muted);
+  border: 1px solid var(--jp-border);
   border-radius: 0.5rem;
 }
 </style>

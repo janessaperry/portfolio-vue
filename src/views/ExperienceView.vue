@@ -121,9 +121,9 @@ function goToNextRole() {
 
 .experience-container {
   padding: 1rem;
-  background-color: var(--color-surface-dark);
+  background-color: var(--jp-surface-dark);
   border-radius: 1.2rem;
-  box-shadow: var(--shadow-inset-card);
+  box-shadow: var(--jp-shadow-card);
   order: 2;
   min-width: 0;
 
@@ -169,13 +169,13 @@ function goToNextRole() {
 }
 
 .lead-in {
-  font-size: 1.25rem;
+  font-size: var(--jp-font-size-lg);
   margin-bottom: 1.5rem;
 }
 
 .divider {
   width: 100%;
   height: 1px;
-  background: linear-gradient(to right, var(--gradient-neon-bg));
+  background: linear-gradient(to right, var(--jp-gradient-neon-stops));
 }
 </style>

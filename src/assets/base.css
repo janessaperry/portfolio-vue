@@ -5,21 +5,29 @@
   --jp-font-mono: 'Fira Mono', "Courier New", Courier;
 
   /* font sizes */
-  --font-size-sm: 0.875rem;
-  --font-size-base: 1.125rem;
-  --font-size-lg: 1.4rem;
-  --font-size-xl: 1.8rem;
-  --font-size-display: 3rem;
+  --jp-font-size-xs: 0.75rem;
+  --jp-font-size-sm: 0.875rem;
+  --jp-font-size-base: clamp(1rem, 1rem + 0.25vw, 1.125rem);
+  --jp-font-size-lg: clamp(1.2rem, 1.2rem + 0.5vw, 1.4rem);
+  --jp-font-size-xl: clamp(1.4rem, 1.25rem + 1vw, 1.8rem);
+  --jp-font-size-display: clamp(2rem, 2rem + 2vw, 3rem);
+
+  /* border radius */
+  --jp-radius-sm: 0.5rem;
+  --jp-radius-md: 1.2rem;
+  --jp-radius-pill: 9999px;
+
+  /* transitions */
+  --jp-duration-fast: 0.2s;
+  --jp-duration-base: 0.4s;
+  --jp-duration-slow: 0.5s;
+  --jp-ease-base: ease;
+
+  /* z-index */
+  --jp-z-nav: 100;
+  --jp-z-fixed: 200;
 
   /* primitive colors */
-  /*--jp-c-white: #FFFFFF;*/
-  /*--jp-c-white-soft: #F8F8F8;*/
-  /*--jp-c-white-mute: #F2F2F2;*/
-
-  /*--jp-c-black: #181818;*/
-  /*--jp-c-black-soft: #222222;*/
-  /*--jp-c-black-mute: #282828;*/
-
   --jp-c-blue-50: #C4C1D5;
   --jp-c-blue-100: #413488;
   --jp-c-blue-300: #201D5A;
@@ -27,64 +35,67 @@
   --jp-c-blue-700: #0C0C34;
   --jp-c-blue-neon: #009DFF;
 
-  --jp-c-fuschia-50: #FACFFA;
-  --jp-c-fuschia-100: #E3ADE3;
-  --jp-c-fuschia-300: #F1A7F2;
-  --jp-c-fuschia-500: #911791;
-  --jp-c-fuschia-700: #59185A;
-  --jp-c-fuschia-900: #3A0E53;
-  --jp-c-fuschia-neon: #FC00FF;
-  --jp-c-fuschia-muted: #C083C0;
+  --jp-c-fuchsia-50: #FACFFA;
+  --jp-c-fuchsia-100: #E3ADE3;
+  --jp-c-fuchsia-300: #F1A7F2;
+  --jp-c-fuchsia-500: #911791;
+  --jp-c-fuchsia-700: #59185A;
+  --jp-c-fuchsia-900: #3A0E53;
+  --jp-c-fuchsia-neon: #FC00FF;
+  --jp-c-fuchsia-muted: #C083C0;
 
   --jp-c-seafoam-500: #95DAC5;
   --jp-c-seafoam-700: #17946E;
   --jp-c-seafoam-neon: #00FFB1;
 }
 
-/* semantic color variables */
+/* semantic tokens */
 :root {
-  --color-background: var(--jp-c-blue-700);
+  --jp-background: var(--jp-c-blue-700);
 
-  --color-surface-light: var(--jp-c-fuschia-100);
-  --color-surface-light-muted: var(--jp-c-fuschia-muted);
-  --color-surface-dark: var(--jp-c-blue-500);
-  --color-surface-dark-muted: var(--jp-c-blue-300);
-  --color-surface-dark-alt: var(--jp-c-fuschia-900);
+  --jp-surface-light: var(--jp-c-fuchsia-100);
+  --jp-surface-light-muted: var(--jp-c-fuchsia-muted);
+  --jp-surface-dark: var(--jp-c-blue-500);
+  --jp-surface-dark-muted: var(--jp-c-blue-300);
+  --jp-surface-dark-alt: var(--jp-c-fuchsia-900);
 
-  --color-border: var(--jp-c-blue-100);
-  /*--color-border-hover: var(--jp-c-divider-dark-1);*/
+  --jp-border: var(--jp-c-blue-100);
 
-  --color-heading-light: var(--jp-c-fuschia-100);
-  --color-heading-dark: var(--jp-c-fuschia-500);
-  --color-text-light-muted: color-mix(in srgb, var(--jp-c-blue-50) 80%, transparent);;
-  --color-text-light: var(--jp-c-blue-50);
-  --color-text-dark: var(--jp-c-blue-700);
-  --color-text-accent: var(--jp-c-seafoam-500);
-  --color-text-accent-alt: var(--jp-c-fuschia-100);
+  --jp-heading: var(--jp-c-fuchsia-100);
+  --jp-heading-subtle: var(--jp-c-fuchsia-500);
 
-  --color-link: var(--jp-c-fuschia-50);
-  --color-link-hover: var(--jp-c-fuschia-300);
+  --jp-text: var(--jp-c-blue-50);
+  --jp-text-muted: color-mix(in srgb, var(--jp-c-blue-50) 80%, transparent);
+  --jp-text-on-light: var(--jp-c-blue-700);
+  --jp-text-accent: var(--jp-c-seafoam-500);
+  --jp-text-accent-secondary: var(--jp-c-fuchsia-100);
 
-  --color-button: var(--jp-c-fuschia-500);
-  --color-button-hover: var(--jp-c-fuschia-900);
-  --color-button-border: var(--jp-c-fuschia-neon);
-  --color-button-secondary: var(--jp-c-blue-300);
-  --color-button-secondary-hover: var(--jp-c-blue-700);
-  --color-button-secondary-border: var(--jp-c-seafoam-500);
+  --jp-link: var(--jp-c-fuchsia-50);
+  --jp-link-hover: var(--jp-c-fuchsia-300);
 
-  --color-selector-bg: color-mix(in srgb, var(--jp-c-blue-700) 40%, transparent);
-  --color-selector-bg-active: color-mix(in srgb, var(--jp-c-blue-700) 100%, transparent);
-  --color-selector-border-active: var(--jp-c-seafoam-500);
+  --jp-button-primary-bg: var(--jp-c-fuchsia-500);
+  --jp-button-primary-bg-hover: var(--jp-c-fuchsia-900);
+  --jp-button-primary-border: var(--jp-c-fuchsia-500);
+  --jp-button-primary-border-hover: var(--jp-c-fuchsia-neon);
+  --jp-button-secondary-bg: transparent;
+  --jp-button-secondary-bg-hover: var(--jp-c-fuchsia-900);
+  --jp-button-secondary-border: var(--jp-c-fuchsia-500);
+  --jp-button-secondary-border-hover: var(--jp-c-fuchsia-neon);
 
-  --color-shadow-inset-light: rgba(227, 173, 227, 0.15);
-  --color-shadow-inset: rgba(252, 0, 255, 0.15);
-  --color-shadow-inset-dark: rgba(12, 12, 52, 0.5);
+  --jp-selector-bg: color-mix(in srgb, var(--jp-c-blue-700) 40%, transparent);
+  --jp-selector-bg-active: color-mix(in srgb, var(--jp-c-blue-700) 100%, transparent);
+  --jp-selector-border-active: var(--jp-c-seafoam-500);
 
-  --color-scrollbar-on-dark: var(--jp-c-fuschia-muted);
+  --jp-scrollbar: var(--jp-c-fuchsia-muted);
 
-  --shadow-inset-card: inset 0 1px 2px 0 var(--color-shadow-inset-light), inset 0 2px 4px 0 var(--color-shadow-inset), inset 0 -2px 4px 0 var(--color-shadow-inset-dark);
+  --jp-shadow-inset-light: rgba(227, 173, 227, 0.15);
+  --jp-shadow-inset: rgba(252, 0, 255, 0.15);
+  --jp-shadow-inset-dark: rgba(12, 12, 52, 0.5);
+  --jp-shadow-card: inset 0 1px 2px 0 var(--jp-shadow-inset-light), inset 0 2px 4px 0 var(--jp-shadow-inset), inset 0 -2px 4px 0 var(--jp-shadow-inset-dark);
 
-  --gradient-neon-bg: rgba(149, 218, 197, 0.8), rgba(0, 157, 255, 0.8), rgba(252, 0, 255, 0.8);
+  --jp-gradient-neon-stops: rgba(149, 218, 197, 0.8), rgba(0, 157, 255, 0.8), rgba(252, 0, 255, 0.8);
+
+  --jp-focus-ring: var(--jp-c-fuchsia-neon);
 }
 
 
@@ -102,10 +113,10 @@ html {
 
 body {
   min-height: 100vh;
-  color: var(--color-text-light);
-  background: var(--color-background);
+  color: var(--jp-text);
+  background: var(--jp-background);
   font-family: var(--jp-font-body), sans-serif;
-  font-size: var(--font-size-base);
+  font-size: var(--jp-font-size-base);
   line-height: 1.4;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -113,11 +124,23 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: Comfortaa, sans-serif;
+  font-family: var(--jp-font-heading), sans-serif;
   line-height: 1.2;
   font-weight: 500;
-  color: var(--color-heading-light);
+  color: var(--jp-heading);
   text-transform: lowercase;
+}
+
+h1 {
+  font-size: var(--jp-font-size-display);
+}
+
+h2 {
+  font-size: var(--jp-font-size-xl);
+}
+
+h3 {
+  font-size: var(--jp-font-size-lg);
 }
 
 input,
@@ -132,18 +155,18 @@ button {
 }
 
 :focus-visible {
-  outline: 2px solid var(--jp-c-fuschia-neon);
+  outline: 2px solid var(--jp-focus-ring);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
 a {
   text-decoration: none;
-  color: var(--color-link);
-  transition: color 0.4s;
+  color: var(--jp-link);
+  transition: color var(--jp-duration-base);
   padding: 0.25rem;
 
   &:hover {
-    color: var(--color-link-hover);
+    color: var(--jp-link-hover);
   }
 }

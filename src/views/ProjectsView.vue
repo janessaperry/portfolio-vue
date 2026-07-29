@@ -84,21 +84,23 @@ const filterCounts = computed(() => ({
   align-items: center;
   gap: 0.25rem;
 
-  background-color: var(--color-background);
-  color: var(--color-text-accent-alt);
-  border-radius: 9999px;
-  font-size: 0.9rem;
+  background-color: var(--jp-background);
+  color: var(--jp-text-accent-secondary);
+  border-radius: var(--jp-radius-pill);
+  font-size: var(--jp-font-size-base);
   font-family: var(--jp-font-heading), sans-serif;
   text-transform: lowercase;
   padding: 0.5rem 0.75rem;
+  transition: color var(--jp-duration-slow), background-color var(--jp-duration-slow);
 
-  &[aria-pressed='true'] {
-    background-color: var(--color-surface-light);
-    color: var(--color-text-dark);
+  &:hover {
+    background-color: var(--jp-surface-light-muted);
+    color: var(--jp-text-on-light)
   }
 
-  @media screen and (min-width: 768px) {
-    font-size: 1rem;
+  &[aria-pressed='true'] {
+    background-color: var(--jp-surface-light);
+    color: var(--jp-text-on-light);
   }
 }
 
@@ -108,15 +110,15 @@ const filterCounts = computed(() => ({
   justify-content: center;
   min-width: 1.25rem;
   padding: 0.1rem 0.35rem;
-  border-radius: 9999px;
-  font-size: 0.75rem;
+  border-radius: var(--jp-radius-pill);
+  font-size: var(--jp-font-size-xs);
   font-family: var(--jp-font-mono), monospace;
-  background-color: var(--color-surface-dark-muted);
-  color: var(--color-text-accent);
+  background-color: var(--jp-surface-dark-muted);
+  color: var(--jp-text-accent);
 
   [aria-pressed='true'] & {
-    background-color: var(--color-surface-light-muted);
-    color: var(--color-text-dark);
+    background-color: var(--jp-surface-light-muted);
+    color: var(--jp-text-on-light);
   }
 }
 

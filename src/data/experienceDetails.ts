@@ -20,7 +20,7 @@ export const experienceDetails: ExperienceDetails[] = [
     id: "junior-web-developer--contractor",
     jobTitle: "Junior Web Developer",
     company: "Independent Contractor",
-    yearRange: "Oct 2025 - Present",
+    yearRange: "2025 - Present",
     description: [
       `Contributed to a civic engagement platform for Austrian municipalities, building modal authentication and participation flows, improving mobile responsiveness, and implementing i18n translations for multilingual support.`,
       `Designed and contributed to the development of a custom WordPress theme featuring Advanced Custom Fields (ACF), React-powered dynamic search and filtering to avoid page reloads, and PHP with Laravel on the backend.`,

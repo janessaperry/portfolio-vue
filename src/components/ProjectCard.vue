@@ -72,9 +72,9 @@ const { project, showHighlights = false } = defineProps<Props>()
   }
 
   padding: 1rem;
-  background-color: var(--color-surface-dark);
-  border-radius: 1.2rem;
-  box-shadow: var(--shadow-inset-card);
+  background-color: var(--jp-surface-dark);
+  border-radius: var(--jp-radius-md);
+  box-shadow: var(--jp-shadow-card);
 
   @media screen and (min-width: 768px) {
     padding: 1.5rem;
@@ -89,15 +89,15 @@ const { project, showHighlights = false } = defineProps<Props>()
 }
 
 .project-meta {
-  color: var(--color-text-light-muted);
-  font-size: 0.75rem;
+  color: var(--jp-text-muted);
+  font-size: var(--jp-font-size-xs);
   font-weight: 500;
   font-family: var(--jp-font-mono), monospace;
   text-transform: uppercase;
 }
 
 .project-role {
-  font-size: 1rem;
+  font-size: var(--jp-font-size-base);
   font-weight: 600;
 }
 
@@ -117,12 +117,12 @@ const { project, showHighlights = false } = defineProps<Props>()
 
 .chip {
   padding: 0.25rem 0.5rem;
-  color: var(--color-text-accent);
-  font-size: 1rem;
+  color: var(--jp-text-accent);
+  font-size: var(--jp-font-size-base);
   line-height: 1.2;
-  background-color: var(--color-surface-dark-muted);
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
+  background-color: var(--jp-surface-dark-muted);
+  border: 1px solid var(--jp-border);
+  border-radius: var(--jp-radius-sm);
 }
 
 .highlights {
@@ -132,7 +132,7 @@ const { project, showHighlights = false } = defineProps<Props>()
 }
 
 .highlight {
-  font-size: 1rem;
+  font-size: var(--jp-font-size-base);
 }
 
 .card-actions {

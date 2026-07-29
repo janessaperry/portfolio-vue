@@ -54,18 +54,18 @@ const emit = defineEmits<{
   width: 4rem;
   height: 4rem;
   aspect-ratio: 1/1;
-  background-color: var(--color-selector-bg);
-  border: 1px solid var(--color-border);
+  background-color: var(--jp-selector-bg);
+  border: 1px solid var(--jp-border);
   border-radius: 9999px;
-  transition: background-color 0.5s ease;
+  transition: background-color var(--jp-duration-slow) var(--jp-ease-base);
 
   &:hover {
-    background-color: var(--color-selector-bg-active);
+    background-color: var(--jp-selector-bg-active);
   }
 
   &[aria-pressed='true'] {
-    background-color: var(--color-selector-bg-active);
-    border-color: var(--color-text-accent);
+    background-color: var(--jp-selector-bg-active);
+    border-color: var(--jp-text-accent);
   }
 
   & > img {
@@ -76,14 +76,14 @@ const emit = defineEmits<{
 
 .companion-bonus {
   padding: 1rem;
-  background-color: var(--color-surface-dark-muted);
-  border: 1px solid var(--color-border);
+  background-color: var(--jp-surface-dark-muted);
+  border: 1px solid var(--jp-border);
   border-radius: 0.75rem;
 }
 
 .bonus-title {
-  color: var(--color-text-accent);
-  font-size: 1.2rem;
+  color: var(--jp-text-accent);
+  font-size: var(--jp-font-size-lg);
   font-weight: 600;
 }
 
@@ -91,7 +91,7 @@ const emit = defineEmits<{
   line-height: 1.2;
 
   &:deep(.bonus-stat) {
-    color: var(--color-text-accent-alt);
+    color: var(--jp-text-accent-secondary);
     font-weight: 600;
   }
 }

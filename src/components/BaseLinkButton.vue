@@ -33,27 +33,28 @@ const buttonClass = computed(() => ({
   gap: 0.5rem;
   font-family: var(--jp-font-heading), sans-serif;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: var(--jp-font-size-base);
   padding: 0.5rem 1rem;
   border-radius: 999px;
+  transition: color var(--jp-duration-slow), border var(--jp-duration-slow), background-color var(--jp-duration-slow);
 
   &.primary {
-    background-color: var(--color-button);
-    border: 1px solid var(--color-button);
+    background-color: var(--jp-button-primary-bg);
+    border: 1px solid var(--jp-button-primary-border);
 
     &:hover {
-      background-color: var(--color-button-hover);
-      border-color: var(--jp-c-fuschia-neon);
+      background-color: var(--jp-button-primary-bg-hover);
+      border-color: var(--jp-button-primary-border-hover);
     }
   }
 
   &.secondary {
-    background-color: var(--color-button-secondary);
-    border: 1px solid var(--color-border);
+    background-color: var(--jp-button-secondary-bg);
+    border: 1px solid var(--jp-button-secondary-border);
 
     &:hover {
-      background-color: var(--color-button-secondary-hover);
-      border-color: var(--color-button-secondary-border);
+      background-color: var(--jp-button-secondary-bg-hover);
+      border-color: var(--jp-button-secondary-border-hover);
     }
   }
 }

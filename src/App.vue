@@ -7,7 +7,7 @@ import { RouterLink, RouterView } from 'vue-router'
   <header>
     <nav>
       <RouterLink to="/experience" class="nav-link">Experience</RouterLink>
-      <RouterLink to="/" class="nav-link nav-link--logo">
+      <RouterLink to="/" class="nav-link">
         <img alt="JP logo" class="logo" src="@/assets/logos/jp-logo.svg" />
       </RouterLink>
       <RouterLink to="/projects" class="nav-link">Work & Projects</RouterLink>
@@ -42,7 +42,7 @@ import { RouterLink, RouterView } from 'vue-router'
 header {
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: var(--jp-z-nav);
   width: 100%;
   padding: 1rem 1rem;
   display: flex;
@@ -52,13 +52,13 @@ header {
 
 nav {
   display: grid;
-  grid-template-columns: 2fr 1fr 2fr;
+  grid-template-columns: 1fr 0fr 1fr;
   gap: 0.5rem;
   padding: 0.5rem;
   margin: 0 auto;
-  background-color: var(--color-surface-dark);
-  border: 1px solid var(--color-border);
-  border-radius: 999px;
+  background-color: var(--jp-surface-dark);
+  border: 1px solid var(--jp-border);
+  border-radius: var(--jp-radius-pill);
 
   @media screen and (min-width: 768px) {
     gap: 1rem;
@@ -71,22 +71,22 @@ nav {
   align-items: center;
   justify-content: center;
   font-family: var(--jp-font-heading), sans-serif;
-  font-size: 0.875rem;
+  font-size: var(--jp-font-size-sm);
   text-transform: lowercase;
-  color: var(--color-text-light);
+  color: var(--jp-text);
 
   @media screen and (min-width: 768px) {
-    font-size: 1.125rem;
+    font-size: var(--jp-font-size-base);
   }
 
   &:hover {
     text-decoration: underline dotted;
-    text-decoration-color: var(--color-link);
+    text-decoration-color: var(--jp-link);
     text-underline-offset: 0.375rem;
   }
 
   &.router-link-exact-active {
-    color: var(--color-link);
+    color: var(--jp-link);
     text-decoration: underline dotted;
     text-underline-offset: 0.375rem;
   }
@@ -136,7 +136,7 @@ footer {
 }
 
 .attribution {
-  font-size: 1rem;
+  font-size: var(--jp-font-size-base);
   display: flex;
   align-items: center;
   gap: 0.75rem;

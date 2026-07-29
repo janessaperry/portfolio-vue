@@ -21,9 +21,15 @@ const { isScrolled } = usePageScroll()
 
 <template>
   <section class="avatar-layout" :class="{ scrolled: isScrolled }">
-    <button class="role-nav-btn role-prev" :disabled="!prevRole" aria-label="View later role" @click="emit('prev')">
+    <button
+      class="role-nav-btn role-prev"
+      :disabled="!prevRole"
+      aria-label="View later role"
+      @click="emit('prev')"
+    >
       <PhArrowLeft aria-hidden="true" />
       <span class="role-nav-label">later</span>
+      <span v-if="prevRole" class="role-nav-label-muted">{{ prevRole.yearRange }}</span>
     </button>
 
     <div class="avatar-container">
@@ -51,9 +57,15 @@ const { isScrolled } = usePageScroll()
       </div>
     </div>
 
-    <button class="role-nav-btn role-next" :disabled="!nextRole" aria-label="View earlier role" @click="emit('next')">
+    <button
+      class="role-nav-btn role-next"
+      :disabled="!nextRole"
+      aria-label="View earlier role"
+      @click="emit('next')"
+    >
       <PhArrowRight aria-hidden="true" />
       <span class="role-nav-label">earlier</span>
+      <span v-if="nextRole" class="role-nav-label-muted">{{ nextRole.yearRange }}</span>
     </button>
 
     <div class="avatar-info">
@@ -70,9 +82,9 @@ const { isScrolled } = usePageScroll()
   }
 
   padding: 1rem;
-  background-color: var(--color-surface-dark);
-  border-radius: 1.2rem;
-  box-shadow: var(--shadow-inset-card);
+  background-color: var(--jp-surface-dark);
+  border-radius: var(--jp-radius-md);
+  box-shadow: var(--jp-shadow-card);
 
   @media screen and (min-width: 768px) {
     height: fit-content;
@@ -87,7 +99,7 @@ const { isScrolled } = usePageScroll()
     left: 0;
     top: 0;
     border-radius: 0;
-    background-color: var(--color-background);
+    background-color: var(--jp-background);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -111,8 +123,8 @@ const { isScrolled } = usePageScroll()
       gap: 0.25rem;
       background: none;
       border: none;
-      color: var(--color-text-accent-alt);
-      font-size: 0.75rem;
+      color: var(--jp-text-accent-secondary);
+      font-size: var(--jp-font-size-xs);
       font-family: var(--jp-font-heading), sans-serif;
       text-transform: lowercase;
       width: 5rem;
@@ -125,16 +137,20 @@ const { isScrolled } = usePageScroll()
   }
 }
 
-.role-nav-label {
-  font-size: 0.7rem;
+.role-nav-label, .role-nav-label-muted {
+  font-size: var(--jp-font-size-xs);
   line-height: 1.2;
   text-align: center;
+}
+
+.role-nav-label-muted {
+  opacity: 0.6;
 }
 
 .avatar-container {
   position: relative;
   height: 20vh;
-  transition: height 0.4s ease;
+  transition: height var(--jp-duration-base) var(--jp-ease-base);
   aspect-ratio: 1/1;
   margin: auto;
 
@@ -144,7 +160,7 @@ const { isScrolled } = usePageScroll()
     inset: 0;
     background: radial-gradient(
       circle at center,
-      var(--jp-c-fuschia-neon) 4%,
+      var(--jp-c-fuchsia-neon) 4%,
       var(--jp-c-blue-neon) 30%,
       transparent 60%
     );
@@ -174,7 +190,7 @@ const { isScrolled } = usePageScroll()
 .star {
   position: absolute;
   border-radius: 50%;
-  background-color: var(--color-text-accent);
+  background-color: var(--jp-text-accent);
   pointer-events: none;
   animation: twinkle 2s ease-in-out infinite;
 }
@@ -268,7 +284,7 @@ const { isScrolled } = usePageScroll()
   left: 48%;
   transform: rotate(-15deg);
   width: clamp(1rem, 2vw, 2rem);
-  transition: width 0.4s ease;
+  transition: width var(--jp-duration-base) var(--jp-ease-base);
 
   @media screen and (min-width: 768px) {
     transition: none;
@@ -295,7 +311,6 @@ const { isScrolled } = usePageScroll()
 .avatar-name,
 .avatar-title {
   text-align: center;
-  transition: font-size 0.4s ease;
+  transition: font-size var(--jp-duration-base) var(--jp-ease-base);
 }
-
 </style>

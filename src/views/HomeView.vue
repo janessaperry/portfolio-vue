@@ -13,9 +13,12 @@ import { allProjects } from '../data/allProjects.ts'
         thoughtful web experiences.
       </p>
 
-      <div class="work-status-container">
-        <p class="work-status">Available for work</p>
-      </div>
+      <a href="mailto:hello@janessaperry.com" class="work-status-container">
+        <span class="work-status">
+          <span class="status-dot"></span>
+          Available for work
+        </span>
+      </a>
 
       <p class="tagline">
         Bringing pixels to life with <span class="accent">&lt;code/&gt;</span> and
@@ -64,25 +67,42 @@ import { allProjects } from '../data/allProjects.ts'
 }
 
 .about {
-  font-size: 1.25rem;
+  font-size: var(--jp-font-size-lg);
 }
 
 .tagline {
   font-family: var(--jp-font-mono), monospace;
-  font-size: 1.125rem;
+  font-size: var(--jp-font-size-base);
 }
 
 .accent {
-  color: var(--color-text-accent);
+  color: var(--jp-text-accent);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
 }
 
 .work-status-container {
-  background: linear-gradient(to top right, var(--gradient-neon-bg));
-  border-radius: 9999px;
+  display: inline-block;
+  background: linear-gradient(to top right, var(--jp-gradient-neon-stops));
+  border-radius: var(--jp-radius-pill);
   padding: 1px;
   width: fit-content;
   margin-left: auto;
   margin-right: auto;
+  color: inherit;
+
+  &:hover {
+    color: inherit;
+  }
 
   @media screen and (min-width: 1024px) {
     margin-left: 0;
@@ -94,17 +114,27 @@ import { allProjects } from '../data/allProjects.ts'
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 2px 0.75rem;
-  background-color: var(--color-surface-dark-alt);
-  border-radius: 9999px;
+  padding: 0.25rem 0.75rem;
+  background-color: var(--jp-surface-dark-alt);
+  border-radius: var(--jp-radius-pill);
+}
 
-  &::before {
+.status-dot {
+  position: relative;
+  display: inline-block;
+  flex-shrink: 0;
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: var(--jp-text-accent);
+  border-radius: 50%;
+
+  &::after {
     content: '';
-    display: block;
-    width: 0.5rem;
-    height: 0.5rem;
-    background-color: #95dac5;
-    border-radius: 999px;
+    position: absolute;
+    inset: 0;
+    background-color: var(--jp-text-accent);
+    border-radius: 50%;
+    animation: pulse 1.5s ease-out infinite;
   }
 }
 
