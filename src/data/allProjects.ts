@@ -14,12 +14,12 @@ export const allProjects: Project[] = [
       {
         type: 'client',
         title: 'Press Start: Client',
-        url: 'github.com/janessaperry/press-start-client',
+        url: 'https://github.com/janessaperry/press-start-client',
       },
       {
         type: 'server',
         title: 'Press Start: Server',
-        url: 'github.com/janessaperry/press-start-server',
+        url: 'https://github.com/janessaperry/press-start-server',
       },
     ],
     categories: ['Design', 'Development'],
@@ -113,12 +113,12 @@ export const allProjects: Project[] = [
       {
         type: 'client',
         title: 'InStock: Client',
-        url: 'github.com/janessaperry/instock-client',
+        url: 'https://github.com/janessaperry/instock-client',
       },
       {
         type: 'server',
         title: 'InStock: Server',
-        url: 'github.com/janessaperry/instock-server',
+        url: 'https://github.com/janessaperry/instock-server',
       },
     ],
     liveUrl: 'https://instock-jp.netlify.app',

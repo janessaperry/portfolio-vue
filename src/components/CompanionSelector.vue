@@ -56,7 +56,7 @@ const emit = defineEmits<{
   aspect-ratio: 1/1;
   background-color: var(--jp-selector-bg);
   border: 1px solid var(--jp-border);
-  border-radius: 9999px;
+  border-radius: var(--jp-radius-pill);
   transition: background-color var(--jp-duration-slow) var(--jp-ease-base);
 
   &:hover {

@@ -78,7 +78,7 @@
   --jp-button-primary-border: var(--jp-c-fuchsia-500);
   --jp-button-primary-border-hover: var(--jp-c-fuchsia-neon);
   --jp-button-secondary-bg: transparent;
-  --jp-button-secondary-bg-hover: var(--jp-c-fuchsia-900);
+  --jp-button-secondary-bg-hover: color-mix(in srgb, var(--jp-c-blue-700) 80%, transparent);
   --jp-button-secondary-border: var(--jp-c-fuchsia-500);
   --jp-button-secondary-border-hover: var(--jp-c-fuchsia-neon);
 
