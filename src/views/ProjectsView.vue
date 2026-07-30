@@ -27,7 +27,7 @@ const filterCounts = computed(() => ({
 <template>
   <section class="title-wrapper">
     <h1 class="page-title">Projects</h1>
-    <p class="sub-title">Explore some of my recent work below.</p>
+    <p class="sub-title">Explore some of my recent work.</p>
   </section>
 
   <section>
@@ -91,11 +91,13 @@ const filterCounts = computed(() => ({
   font-family: var(--jp-font-heading), sans-serif;
   text-transform: lowercase;
   padding: 0.5rem 0.75rem;
-  transition: color var(--jp-duration-slow), background-color var(--jp-duration-slow);
+  transition:
+    color var(--jp-duration-slow),
+    background-color var(--jp-duration-slow);
 
   &:hover {
-    background-color: var(--jp-surface-light-muted);
-    color: var(--jp-text-on-light)
+    background-color: var(--jp-surface-light);
+    color: var(--jp-text-on-light);
   }
 
   &[aria-pressed='true'] {
@@ -115,6 +117,7 @@ const filterCounts = computed(() => ({
   font-family: var(--jp-font-mono), monospace;
   background-color: var(--jp-surface-dark-muted);
   color: var(--jp-text-accent);
+
 
   [aria-pressed='true'] & {
     background-color: var(--jp-surface-light-muted);

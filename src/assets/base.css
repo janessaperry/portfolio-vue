@@ -36,7 +36,7 @@
   --jp-c-blue-neon: #009DFF;
 
   --jp-c-fuchsia-50: #FACFFA;
-  --jp-c-fuchsia-100: #E3ADE3;
+  --jp-c-fuchsia-100: #E2AFE2;
   --jp-c-fuchsia-300: #F1A7F2;
   --jp-c-fuchsia-500: #911791;
   --jp-c-fuchsia-700: #59185A;
@@ -53,7 +53,7 @@
 :root {
   --jp-background: var(--jp-c-blue-700);
 
-  --jp-surface-light: var(--jp-c-fuchsia-100);
+  --jp-surface-light: var(--jp-c-fuchsia-300);
   --jp-surface-light-muted: var(--jp-c-fuchsia-muted);
   --jp-surface-dark: var(--jp-c-blue-500);
   --jp-surface-dark-muted: var(--jp-c-blue-300);
@@ -61,7 +61,7 @@
 
   --jp-border: var(--jp-c-blue-100);
 
-  --jp-heading: var(--jp-c-fuchsia-100);
+  --jp-heading: var(--jp-c-fuchsia-300);
   --jp-heading-subtle: var(--jp-c-fuchsia-500);
 
   --jp-text: var(--jp-c-blue-50);

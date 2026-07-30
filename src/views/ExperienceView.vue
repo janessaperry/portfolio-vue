@@ -64,7 +64,7 @@ function goToNextRole() {
 <template>
   <section class="title-wrapper">
     <h1 class="page-title">My Experience</h1>
-    <p class="sub-title">Check out my career journey below.</p>
+    <p class="sub-title">Check out my career journey.</p>
   </section>
 
   <div class="experience-layout">
