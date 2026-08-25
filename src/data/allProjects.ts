@@ -10,6 +10,7 @@ export const allProjects: Project[] = [
     id: 'press-start--project',
     showcase: true,
     slug: 'press-start',
+    liveUrl: 'https://press-start.justpixels.dev/',
     githubRepos: [
       {
         type: 'client',

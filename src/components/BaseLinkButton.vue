@@ -20,7 +20,7 @@ const buttonClass = computed(() => ({
 </script>
 
 <template>
-  <a :href="url" target="_blank" referrerpolicy="no-referrer" class="button" :class="buttonClass">
+  <a :href="url" target="_blank" rel="noopener" referrerpolicy="no-referrer" class="button" :class="buttonClass">
     {{ label }}
     <component :is="icon" size="18" />
   </a>
