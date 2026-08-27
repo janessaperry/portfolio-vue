@@ -248,7 +248,7 @@ watch(() => props.selectedRole, scrollRoleIntoView)
 }
 
 .role-skill-item {
-  padding: 0 0.5rem;
+  padding: 0.25rem 0.5rem;
   font-size: var(--jp-font-size-base);
   color: var(--jp-text-accent);
   background-color: var(--jp-surface-dark-muted);

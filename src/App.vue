@@ -23,7 +23,7 @@ import { RouterLink, RouterView } from 'vue-router'
       <a href="https://github.com/janessaperry" target="_blank" rel="noreferrer">
         <ph-github-logo class="social-icon" />
       </a>
-      <a href="https://www.linkedin.com/in/janessa-perry" target="_blank" rel="noreferrer">
+      <a href="https://linkedin.com/in/janessa-perry" target="_blank" rel="noreferrer">
         <ph-linkedin-logo class="social-icon" />
       </a>
       <a href="mailto:hello@janessaperry.com" target="_blank" rel="noreferrer">
