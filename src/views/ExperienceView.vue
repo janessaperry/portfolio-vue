@@ -70,8 +70,7 @@ function goToNextRole() {
   <div class="experience-layout">
     <section class="experience-container">
       <p class="lead-in">
-        I'm a full-stack developer with a background in design who enjoys building thoughtful user
-        experiences and solving complex problems.
+        Explore the roles and experiences that have shaped how I work today.
       </p>
 
       <RoleSelector :selectedRole="selectedRole" @role-change="onRoleChange" />

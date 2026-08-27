@@ -31,8 +31,8 @@ export const allProjects: Project[] = [
     title: 'Press Start',
     role: 'Full Stack Developer • Designer',
     type: 'Personal Project',
-    yearCompleted: 'Ongoing',
-    teaser: `Developing a full-stack video game collection tracker with custom React hooks, multi-category filtering with URL syncs, JWT authentication with secure password reset, and a PostgreSQL backend synced from the IGDB API.`,
+    yearCompleted: '2026',
+    teaser: `Developed a full-stack video game collection tracker with custom React hooks, multi-category filtering with URL syncs, JWT authentication with secure password reset, and a PostgreSQL database synced from the IGDB API.`,
     highlights: [
       `Implemented JWT authentication with a secure password reset flow, including rate-limited reset requests and bcrypt hashed tokens.`,
       `Built a multi-category filter system with URL param sync featuring different behaviours on desktop (sidebar filters applied on change) versus mobile (modal filters applied on submit).`,

@@ -141,10 +141,13 @@ const { isScrolled } = usePageScroll()
   font-size: var(--jp-font-size-xs);
   line-height: 1.2;
   text-align: center;
+  white-space: nowrap;
 }
 
 .role-nav-label-muted {
   opacity: 0.6;
+  text-transform: uppercase;
+  font-size: 0.5rem;
 }
 
 .avatar-container {
@@ -293,7 +296,7 @@ const { isScrolled } = usePageScroll()
 
 .avatar-layout.scrolled .avatar-laptop-sticker {
   @media screen and (max-width: 767px) {
-    width: 0.75rem;
+    width: 0.6rem;
   }
 }
 

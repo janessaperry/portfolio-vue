@@ -105,7 +105,7 @@ main {
   flex-grow: 1;
 
   @media screen and (min-width: 768px) {
-    padding: 4rem 1rem;
+    padding: 4rem 2rem;
   }
 }
 

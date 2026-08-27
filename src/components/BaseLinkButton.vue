@@ -34,7 +34,7 @@ const buttonClass = computed(() => ({
   font-family: var(--jp-font-heading), sans-serif;
   font-weight: 600;
   font-size: var(--jp-font-size-base);
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.75rem;
   border-radius: var(--jp-radius-pill);
   transition: color var(--jp-duration-slow), border var(--jp-duration-slow), background-color var(--jp-duration-slow);
 

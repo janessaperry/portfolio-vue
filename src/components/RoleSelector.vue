@@ -92,14 +92,11 @@ watch(() => props.selectedRole, scrollRoleIntoView)
       </div>
     </div>
 
-    <div>
-      <h3>Quest Log</h3>
-      <ul>
-        <li v-for="(item, index) in selectedRole.description" :key="index">
-          {{ item }}
-        </li>
-      </ul>
-    </div>
+    <ul>
+      <li v-for="(item, index) in selectedRole.description" :key="index">
+        {{ item }}
+      </li>
+    </ul>
 
     <div class="role-skills">
       <h3>Skills Unlocked</h3>
@@ -220,13 +217,9 @@ watch(() => props.selectedRole, scrollRoleIntoView)
 
 .role-meta {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
-
-  @media screen and (min-width: 768px) {
-    flex-direction: row;
-    gap: 1rem;
-  }
+  gap: 1rem;
 
   & > p {
     font-size: var(--jp-font-size-base);
